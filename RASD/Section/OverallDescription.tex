@@ -1,0 +1,48 @@
+\section{Overall Description}\label{intro}
+\subsection{Product perspective}
+\subsubsection{Scenarios}
+\begin{enumerate}[label=\textbf{\Alph*}.]
+    \item  \textbf{Educator Registration} \\
+    Marco, docente presso l'Università di Napoli, ha recentemente scoperto CKB tramite un collega. Attratto dalle potenzialità della piattaforma nel migliorare le competenze di sviluppo software degli studenti, Marco ha deciso di iscriversi come educatore. Recatosi sulla home page di CKB ha selezionato l’opzione ”Registrati” e ha inserito il suo indirizzo email, scelto una password e fornito dettagli di base sul suo profilo, inclusi nome e cognome. Successivamente, ha completato la procedura selezionando l'opzione "Iscriviti come educatore". Una volta registrato con successo, Marco è stato reindirizzato alla sua dashboard personale all'interno di CKB. Qui, ha avuto accesso a una panoramica delle funzionalità per educatori, inclusa la possibilità di creare nuovi tornei e battaglie.
+\item  \textbf{Student Registration} \\
+Andrea, uno studente dell'Università di Bologna, ha conosciuto l'applicazione CKB grazie al consiglio del suo professore. Affascinato dall'opportunità di affinare le sue competenze di sviluppo software attraverso sfide di code kata, Andrea ha deciso di seguire il suggerimento del docente e di iscriversi alla piattaforma.
+Recatosi sulla home page di CKB ha selezionato l'opzione "Registrati" e successivamente ha fornito il suo indirizzo email, creando una password. Inoltre, ha inserito il suo nome e cognome, selezionando l'opzione "Iscriviti come studente" per completare la registrazione. Tuttavia, durante il processo di registrazione, ha ricevuto un messaggio di errore. Il sistema CKB ha segnalato che l'indirizzo email inserito era già presente nel sistema. Andrea, prontamente, ha corretto l'indirizzo email, assicurandosi di utilizzare un account valido.
+Una volta completato con successo il processo di registrazione, Andrea è stato reindirizzato alla sua dashboard personale sulla piattaforma CKB. Qui, ha potuto esplorare le varie funzionalità dedicate agli studenti, come i tornei attivi, le competizioni imminenti e le informazioni sul suo progresso nella piattaforma.
+    \item \textbf{Tournament Creation} \\ 
+    Daniele, professore di informatica presso il Politecnico di Milano, desidera creare un torneo sulla piattaforma CKB per permettere ai suoi studenti di sviluppare e migliorare le loro competenze di programmazione attraverso la partecipazione a battaglie di code kata.
+
+Daniele accede alla piattaforma utilizzando le sue credenziali di accesso come professore e naviga alla sezione dedicata alla creazione di tornei sulla piattaforma CKB.
+
+Successivamente, avvia il processo di creazione di un nuovo torneo selezionando l'opzione appropriata dalla dashboard principale. Il sistema richiede a Daniele di inserire  informazioni sul torneo, come il nome, una data di scadenza per la registrazione al torneo da parte degli studenti e la lista di colleghi che possono creare battaglie all'interno di tale torneo.
+
+Il professore completa il modulo e, dopo aver inserito  le informazioni richieste, conferma la creazione del torneo. Il sistema verifica la validità delle informazioni fornite e, nel caso il nome del torneo risulti già esistente,  invierà il seguente warning:
+"Il nome del torneo è gia esistente".
+Altrimenti, in caso di verifica positiva, il sistema registra il nuovo torneo all'inteno del sistema. 
+Tutti gli  studenti iscritti alla piattaforma ricevono notifiche sulla creazione del nuovo torneo.
+
+\item \textbf{Battle Creation} \\ 
+Giovanni, un professore  con privilegi di creazione di battaglie all'interno del torneo "Algorithms and data structures" sulla piattaforma CKB, decide di creare una nuova battaglia. A tale scopo,dopo aver effettuato l'accesso, naviga alla sezione dedicata alla creazione di battaglie e avvia il processo di creazione di una nuova battaglia. Il sistema richiede a Daniele di inserire informazioni essenziali sulla battaglia, tra cui una breve descrizione testuale, il progetto software con gli script di automazione della build, il numero minimo e massimo di studenti per gruppo, la data di scadenza per la registrazione e per la consegna del progetto.
+Inoltre Daniele imposta informazioni aggiuntive che andranno ad incidere sulla valutazione del punteggio, come sicurezza, mantenimento e affidabilità. Infine, il sistema integra la nuova battaglia nella piattaforma. Gli studenti iscritti al torneo pertinente ricevono notifiche riguardo alla prossima battaglia.
+\item \textbf{Tournament registration} \\
+Sarah, una studentessa  di ingegneria informatica, si ritrova desiderosa di una nuova sfida per elevare le sue abilità di programmazione. Decide allora di collegarsi alla piattaforma CKB. Dopo aver effettuato l'accesso, esplora nella sezione dedicata i tornei disponibili e ne individua uno in particolare - "Python  Challenge". Sarah clicca sul torneo e legge la sua descrizione. Senza esitazione, decide di partecipare alla Python Challenge. Cliccando su 'Iscriviti al torneo' Sarah fa ufficialmente parte del torneo. A questo punto può visualizzare tutte le battaglie in programma all'interno del torneo e verrà anche notificata alla creazione di battaglie future
+.
+\item \textbf{Battle registration} \\
+Leonardo, studente iscritto al torneo "Super Tournament" su CKB, riceve una notifica che cattura la sua attenzione: "Chiamata alla Battaglia - Python Coding Challenge". Volentoroso di mettere alla prova le sue abilità di programmazione, Leonardo, dopo aver effettuato l'accesso, entra nella sezione dedicata alla battaglia, legge con attenzione i dettagli forniti e decide di iscriversi alla battaglia cliccando su "Iscriviti alla battaglia". Successivamente la piattaforma permette a Leonardo di scegliere se partecipare individualmente o invitare altri colleghi a formare un team per la battle, rispettando il numero minimo e massimo di partecipanti consentiti. Dopo la scadenza della fase di registrazione, la piattaforma CKB genera automaticamente una repository dedicata per il progetto della "Python Coding Challenge". Successivamente, il link diretto alla repository viene consegnato ai membri del team e reso disponibile nella sezione "Le tue battaglie" dell'applicazione.
+\item  \textbf{Face the battle} \\
+Il team "CodeCrafters", composto da appassionati studenti desiderosi di immergersi nella battle, riceve tramite mail il link alla repository su GitHub dedicata alla sfida "Algoritmi Avanzati" su CKB. Con un semplice click, procedono con il fork di tale repository, contenente il codice kata, dando così vita al loro spazio di lavoro virtuale. Per garantire una valutazione continua e precisa del loro lavoro, i CodeCrafters configurano GitHub Actions, che assicura una tempestiva comunicazione con la piattaforma.
+Immersi nella stimolante sfida degli "Algoritmi Avanzati", i CodeCrafters avviano il processo di sviluppo adottando l'approccio test-first. Con creatività, creano le prime implementazioni, le sottopongono a test e le committano nella repository principale, tracciando così ogni passo del loro iterativo percorso. Ogni push prima della scadenza della battaglia attiva la piattaforma, che valuta automaticamente gli aspetti funzionali e la tempestività del lavoro dei CodeCrafters. Successivamente, la piattaforma calcola e aggiorna il loro punteggio di battaglia, offrendo feedback in tempo reale sulla qualità del loro prezioso contributo.
+\item \textbf{Ranking display} \\
+Matteo, durante la sua partecipazione a una battaglia su CKB, accedendo alla sezione del Torneo e della battaglia d'interesse può monitorare in tempo reale la posizione della sua squadra attraverso una classifica dinamica. Al termine della battaglia, si trova di fronte a una fase di consolidamento, durante la quale l'educatore può decidere se assegnare un punteggio personale al progetto o affidarsi esclusivamente al punteggio automatico. Alla conclusione di questa fase, Matteo può consultare la classifica finale  recandosi nella sezione dedicata alla battaglia appena conclusa, ottenendo così una panoramica completa delle prestazioni della sua squadra.
+
+Il punteggio ottenuto in questa specifica battaglia si somma a quelli accumulati nelle battaglie precedenti, contribuendo a formare il suo punteggio complessivo nel torneo. Matteo e tutti gli utenti hanno la possibilità di esplorare la classifica nella sezione dedicata al torneo stesso , accessibile a tutti gli utenti interessati.
+
+Infine, una volta che l'educatore chiude definitivamente il torneo, Matteo e gli altri iscritti a CKB possono consultare la classifica finale del torneo sempre nella sezione relativa a quel torneo.
+
+\item \textbf{Evaluates project} \\
+Una volta scaduta la fase di sottomissione di una battaglia del torneo "Algoritmi Avanzati" su CKB, il Professore Bianchi, creatore della sfida, si prepara ad eseguire una valutazione manuale dei progetti presentati dai team partecipanti.Accede alla piattaforma, seleziona il torneo e la battaglia appena conclusa. All'interno dell'interfaccia, trova una lista completa dei link alle repository degli studenti con la quale può accedere ai diversi progetti.
+Inizia esaminando attentamente il codice sorgente prodotto da ciascun team, analizzando gli aspetti che non possono essere completamente valutati in modo automatico.
+Durante questa fase, il Professore Bianchi attribuisce un punteggio personale a ciascun team in base alla sua esperienza e conoscenza approfondita, in particolare premiando la creatività, l'ingegnosità e l'approccio strategico dei team partecipanti.
+
+
+
+\end{enumerate}
