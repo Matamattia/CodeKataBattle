@@ -1,0 +1,139 @@
+\section{Introduction}\label{intro}
+\subsection{Purpose}
+In the context of education and development in the field of programming, students often face a series of challenges. The process of improving software development skills, both for beginners and more experienced students, requires a rigorous and structured approach.\newline
+
+\noindent The traditional method of learning based on theoretical lessons and assigned tasks can sometimes be limited in its effectiveness, as students may not have the opportunity to concretely apply what they have learned. Theory and practice must be integrated synergistically to ensure significant growth in software development skills.
+\newline
+
+\noindent CodeKataBattle (CKB) is an innovative response to these challenges in software learning and development. The CKB platform represents a revolutionary solution for students eager to enhance their programming skills. CKB is designed to transform the learning process into a collaborative and practical experience.
+\newline
+
+\noindent Thanks to CKB, students have the opportunity to engage in real code battles, solving programming exercises and overcoming a series of specific tests. These battles allow students to apply the theoretical knowledge they have acquired, putting into practice what they have learned through a series of specific challenges.
+\newline
+
+\noindent This document represents the RASD for the CodeKataBattle (CKB) system, providing a description focused on the system's requirements and specifications. It illustrates scenarios and use cases to detail the system's features, interactions with interested actors, and the limitations it is subject to.
+
+\subsubsection{Goal}
+The system is characterized by the following goals:
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{cX}
+        \toprule
+        \textbf{G1} & Educators can manage coding tournaments and battles              \\
+        \textbf{G2} & Students can form teams for coding battles  \\
+        \textbf{G3} & Students can participate in coding battles    \\
+        \textbf{G4} & Educators are able to evaluate manually the projects of the students\\
+        \textbf{G5} & Projects are  evaluated in an automated way\\
+        \textbf{G6} & Educators and students can see the rank of the battles and tournaments \\
+        \\ \bottomrule
+    \end{tabularx}
+\end{table}
+
+
+\subsection{Scope}
+The main human actors in this system are students and educators. Educators use this platform to challenge students by creating competitions where groups of students compete against each other, demonstrating and improving their skills. The challenges consist of a programming exercise in a chosen language (such as Java or Python). Students must follow a "test-first" \footnote{Test-first: The "test-first" approach involves writing tests before implementing the code, promoting test-driven development.}approach, writing code to pass provided tests.
+
+\noindent There is also a non-human actor that plays a crucial role in the platform : Github. GitHub plays a central role in the CodeKataBattle (CKB) for hosting battles and facilitating collaboration among students. It enables automated evaluations through GitHub Actions, tracking teams' progress and updating battle scores in real-time. 
+
+\noindent Here's how the system works: a teacher creates a "battle" following specific steps. They upload the problem description and the project to CKB, set the minimum and maximum number of students per group, define deadlines for registration and project submission, and set evaluation criteria. Once enrolled in a "battle," students form teams and start working on the project. The platform integrates GitHub, a source code management service, to facilitate collaboration.
+
+\noindent Whenever students upload a new version of their code, the platform automatically calculates the team's score, considering aspects such as the number of passed tests, timeliness of submissions, and code quality. The automated assessment also includes static code analysis to evaluate aspects like security, reliability, and maintainability. Teachers can assign personal scores based on students' performance.
+
+\noindent At the end of each "battle," the platform updates scores and displays the updated ranking. Students and teachers can monitor progress during the challenge. After the final submission deadline, a consolidation phase takes place, which may involve manual assessment by teachers. Once this phase is complete, all involved students are notified of the final "battle" ranking.
+
+\noindent Scores obtained in each "battle" contribute to the overall tournament score for each student. These scores are used to create an overall tournament ranking, showcasing students' performance compared to their peers.
+
+\subsubsection{World phenomena}
+\begin{table}[H]
+    \begin{tabularx}{\textwidth}{cX}
+        \toprule
+        \textbf{WP1} & Educators evaluate the projects        \\
+        \textbf{WP2} & Students solve the challenges  
+        \\ \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsubsection{Shared phenomena}
+\begin{table}[H]
+    \centering
+    \begin{tabularx}{\textwidth}{c|X|c}
+        \toprule
+        ID            &                                                                                                                                                                       & Controlled by \\ \midrule
+        \textbf{SP1}  & Students invite other students to join their group                                                                                                            & world         \\ \midrule
+        \textbf{SP2}  & Students push a new commit into the main branch of their repository                                                                                                                 & world         \\ \midrule
+        \textbf{SP3}  & Students can view the battle rank                                                                                                                      & world         \\ \midrule
+        \textbf{SP4}  & Students can view the tournament rank                                                                                                                      & world         \\ \midrule
+        \textbf{SP5}  & The educator uploads the battle                                                                                           & world       \\ \midrule
+        \textbf{SP6}  & Students register for the battle                                                                                                                                      & world         \\ \midrule
+        \textbf{SP7}  & Students fork GitHub repository  & world       \\ \midrule
+
+        \textbf{SP8} & Educator close the tournament                                                                                                                             & world         \\ \midrule     
+        \textbf{SP9}  & The professor sets the minimum and maximum number of students per group                                                                                             & world       \\ \midrule
+         \textbf{SP10}  & The professor sets a registration deadline                                                                                                           & world         \\ \midrule
+         \textbf{SP11}  & The professor sets a final submission deadline                                                                                            & world         \\ \midrule
+         \textbf{SP12}  & The professor configures additional scoring parameters                                                                                   & world         \\ \midrule
+        \textbf{SP13}  & Educator use the CKB platform to see the sources produced by each team                                                                                                                & world         \\ \midrule
+          \textbf{SP14}  & Students receive the challenge                                                                                 & machine       \\ \midrule
+        \textbf{SP15} & System notify user  about tournament creation                                                                                          & machine       \\ \midrule
+        \textbf{SP16} & System notify user about the final battle rank                                                                                                                             & machine       \\ \midrule
+        \textbf{SP17} & System notify user about the creation of a new battle                                                                                                                            & machine        
+                                                                                                                \\ \bottomrule
+    \end{tabularx}
+\end{table}
+
+\subsection{Definitions, Acronyms, Abbreviations}
+
+\subsubsection{Definitions}
+\begin{itemize}
+\item Student - An individual enrolled in an educational institution or self-learner who uses the CKB platform to enhance their software development skills.
+    \item Educator - A teacher or education professional who uses the CKB platform to create and manage code kata battles and tournaments for students.
+    \item Educator with permission - Educator who has the authority to create battles within a tournament , and also has the ability to close that same tournament. 
+    \item Tournament - A series of code kata battles, created and organized by an educator, where teams of students compete to achieve the highest score in each battle and in the overall tournament.
+    
+    \item Battle - A programming exercise that consists of a textual description and a software project with build automation scripts and a set of test cases to be passed.
+
+    \item Project - The solution proposed by the students for the exercise during the battle.
+    
+    \item  Battle Score - A natural number between 0 and 100 assigned to each team in a battle, based on mandatory factors evaluated automatically and optional factors evaluated manually by educators
+    \item Battle ranking - A ranking that lists students in order of performance. This ranking is determined by the battle score obtained by each student in the specific battle.
+    \item Tournament Ranking - A ranking that lists students in order of performance within a single tournament on the CKB platform. This ranking is determined by summing the scores obtained by each student in all the code kata battles that make up the tournament they participated in
+   % \item GitHub - A web platform that provides developers with a space to host and collaborate on software projects, manage source code, and facilitate the review and integration of changes.
+   % \item Fork - A creation of an independent copy of an existing repository, allowing developers to make changes without directly affecting the main project.
+    %\item GitHub Repository - An online storage space for a software project, including files, documentation, and version history, facilitating collaboration among developers and code management.
+    %\item Commit - The act of recording changes made to files in a repository, confirming them in the Git version control system, and providing a descriptive message that traces the history of the changes.
+\end{itemize}
+\subsubsection{Acronyms}
+\begin{itemize}
+    \item CKB - Code Kada Battle.
+    \item RASD - Requirement Analysis and Specification Document. 
+    \item UI - User interface. 
+    \item UML - Unified Modelling Language.
+\end{itemize}
+\subsubsection{Abbreviations}
+\begin{itemize}
+    \item WP - World Phenomena.
+    \item SP - Shared Phenomena.
+    \item G - Goal
+    \item R- Requirement
+\end{itemize}
+
+\subsection{Revision history}
+
+
+
+\subsection{Reference Documents}
+The creation of this document is based on :
+\begin{itemize}
+    \item Slides of Software Engineering 2 course
+\end{itemize}
+
+
+\subsection{Document Structure}
+This document is composed of six sections:
+\begin{enumerate}
+    \item \textbf{Introduction}: In this section, we present an overview of the document's content and structure. We outline the problem at hand and articulate the goals that the system aims to achieve. The subsection on scope delves into a comprehensive description of various world and shared phenomena relevant to our subject matter. Additionally, essential information is provided to facilitate proper understanding, including definitions and abbreviations.
+    \item  \textbf{Overall Description}: This section offers a holistic description of the system. We provide insights into the system's architecture and functionality, accompanied by an outline of the users and their primary functionalities. Domain diagrams are introduced to illustrate key components, and various scenarios are detailed to enhance comprehension. Finally, we present the fundamental assumptions within the system's domain.
+    \item  \textbf{Specific Requirements}: In this section, we delve into the specific requirements of the system. Both functional and non-functional requirements are elucidated to provide a comprehensive understanding. Use case diagrams are included to visually represent system interactions, accompanied by detailed descriptions of each use case and related sequence diagrams. The section concludes with a mapping of requirements onto both overarching goals and individual use cases.
+    \item \textbf{Formal Analysis Using Alloy}:  Here, we conduct a formal analysis of the system using Alloy. This includes a rigorous examination of the system's specifications and constraints to ensure coherence and reliability.
+    \item \textbf{Effort Spent}: In this section, we provide an estimate of the effort invested by each member of the group. This allows for a transparent understanding of the distribution of work within the team.
+    \item  \textbf{References}: The document concludes with a comprehensive list of references used during the research and development phases. This section serves as a valuable resource for readers seeking additional information or verification of the document's content.
+\end{enumerate}
