@@ -18,13 +18,12 @@ The system is characterized by the following goals:
 \begin{table}[H]
     \begin{tabularx}{\textwidth}{cX}
         \toprule
-        \textbf{G1} & Educators can create coding tournaments and battles              \\
+        \textbf{G1} & Educators can manage coding tournaments and battles              \\
         \textbf{G2} & Students can form teams for coding battles  \\
         \textbf{G3} & Students can participate in coding battles    \\
-        \textbf{G4} & Students are notified about battles and tournaments \\
-        \textbf{G5} & Educators are able to evaluate manually the projects of the student\\
-        \textbf{G6} & Projects are  evaluated in an automated way based on functional aspects, timeliness, and quality level of the sources  \\
-        \textbf{G7} & Educators and students can see the rank of the battles and tournaments \\
+        \textbf{G4} & Educators are able to evaluate manually the projects of the students\\
+        \textbf{G5} & Projects are  evaluated in an automated way\\
+        \textbf{G6} & Educators and students can see the rank of the battles and tournaments \\
         \\ \bottomrule
     \end{tabularx}
 \end{table}
@@ -85,10 +84,22 @@ The main human actors in this system are students and educators. Educators use t
 
 \subsubsection{Definitions}
 \begin{itemize}
-    \item GitHub - GitHub is a web platform that provides developers with a space to host and collaborate on software projects, manage source code, and facilitate the review and integration of changes.
-    \item Fork - A fork on GitHub is the creation of an independent copy of an existing repository, allowing developers to make changes without directly affecting the main project.
-    \item GitHub Repository - GitHub repository is an online storage space for a software project, including files, documentation, and version history, facilitating collaboration among developers and code management.
-    \item Commit - A commit is the act of recording changes made to files in a repository, confirming them in the Git version control system, and providing a descriptive message that traces the history of the changes.
+\item Student - An individual enrolled in an educational institution or self-learner who uses the CKB platform to enhance their software development skills.
+    \item Educator - A teacher or education professional who uses the CKB platform to create and manage code kata battles and tournaments for students.
+    \item Educator with permission - Educator who has the authority to create battles within a tournament , and also has the ability to close that same tournament. 
+    \item Tournament - A series of code kata battles, created and organized by an educator, where teams of students compete to achieve the highest score in each battle and in the overall tournament.
+    
+    \item Battle - A programming exercise that consists of a textual description and a software project with build automation scripts and a set of test cases to be passed.
+
+    \item Project - The solution proposed by the students for the exercise during the battle.
+    
+    \item  Battle Score - A natural number between 0 and 100 assigned to each team in a battle, based on mandatory factors evaluated automatically and optional factors evaluated manually by educators
+    \item Battle ranking - A ranking that lists students in order of performance. This ranking is determined by the battle score obtained by each student in the specific battle.
+    \item Tournament Ranking - A ranking that lists students in order of performance within a single tournament on the CKB platform. This ranking is determined by summing the scores obtained by each student in all the code kata battles that make up the tournament they participated in
+   % \item GitHub - A web platform that provides developers with a space to host and collaborate on software projects, manage source code, and facilitate the review and integration of changes.
+   % \item Fork - A creation of an independent copy of an existing repository, allowing developers to make changes without directly affecting the main project.
+    %\item GitHub Repository - An online storage space for a software project, including files, documentation, and version history, facilitating collaboration among developers and code management.
+    %\item Commit - The act of recording changes made to files in a repository, confirming them in the Git version control system, and providing a descriptive message that traces the history of the changes.
 \end{itemize}
 \subsubsection{Acronyms}
 \begin{itemize}
@@ -101,6 +112,8 @@ The main human actors in this system are students and educators. Educators use t
 \begin{itemize}
     \item WP - World Phenomena.
     \item SP - Shared Phenomena.
+    \item G - Goal
+    \item R- Requirement
 \end{itemize}
 
 \subsection{Revision history}
@@ -111,6 +124,7 @@ The main human actors in this system are students and educators. Educators use t
 The creation of this document is based on :
 \begin{itemize}
     \item Slides of Software Engineering 2 course
+    \item  The specification of the RASD and DD assignment of the Software Engineering II course, held by professor Elisabetta Di Nitto at the Politecnico di Milano, A.Y 2023/2024;
 \end{itemize}
 
 
