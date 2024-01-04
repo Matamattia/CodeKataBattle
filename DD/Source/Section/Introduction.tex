@@ -1,0 +1,76 @@
+\section{Introduction}
+
+\subsection{Purpose}
+
+The primary objective of this document is to offer a comprehensive and detailed overview of the proposed software, with a special emphasis on its architectural framework, system modules, and their respective interfaces. Additionally, the document will present a dynamic view of the software's key functionalities, illustrated through elaborate interaction diagrams that depict the communication flow among various components. The document will also encompass critical aspects of the implementation, testing, and integration phases, ensuring a holistic understanding of the software development process.
+
+
+\subsection{Scope}
+
+    The main human actors in this system are students and educators. Educators use this platform to chal- lenge students by creating competitions where groups of students compete against each other, demon- strating and improving their skills. The challenges consist of a programming exercise in a chosen language (such as Java or Python). Students must follow a ”test-first” 1approach, writing code to pass provided tests.
+There is also a non-human actor that plays a crucial role in the platform : Github. GitHub plays a central role in the CodeKataBattle (CKB) for hosting battles and facilitating collaboration among students. It
+enables automated evaluations through GitHub Actions, tracking teams’ progress and updating battle scores in real-time.
+Here’s how the system works: a teacher creates a ”battle” following specific steps. They upload the problem description and the project to CKB, set the minimum and maximum number of students per group, define deadlines for registration and project submission, and set evaluation criteria. Once enrolled in a ”battle,” students form teams and start working on the project. The platform integrates GitHub, a source code management service, to facilitate collaboration.
+Whenever students upload a new version of their code, the platform automatically calculates the team’s score, considering aspects such as the number of passed tests, timeliness of submissions, and code quality. The automated assessment also includes static code analysis to evaluate aspects like security, reliability, and maintainability. Teachers can assign personal scores based on students’ performance.
+At the end of each ”battle,” the platform updates scores and displays the updated ranking. Students and teachers can monitor progress during the challenge. After the final submission deadline, a consolidation phase takes place, which may involve manual assessment by teachers. Once this phase is complete, all involved students are notified of the final ”battle” ranking.
+Scores obtained in each ”battle” contribute to the overall tournament score for each student. These scores are used to create an overall tournament ranking, showcasing students’ performance compared to their peers.
+
+\newpage
+
+
+\subsection{Definitions, Acronyms, Abbreviations}
+\subsubsection{Definitions}
+\begin{itemize}
+\item Student - An individual enrolled in an educational institution or self-learner who uses the CKB platform to enhance their software development skills.
+    \item Educator - A teacher or education professional who uses the CKB platform to create and manage code kata battles and tournaments for students.
+    \item Educator with permission - Educator who has the authority to create battles within a tournament , and also has the ability to close that same tournament. 
+    \item Tournament - A series of code kata battles, created and organized by an educator, where teams of students compete to achieve the highest score in each battle and in the overall tournament.
+    
+    \item Battle - A programming exercise that consists of a textual description and a software project with build automation scripts and a set of test cases to be passed.
+
+    \item Project - The solution proposed by the students for the exercise during the battle.
+    
+    \item  Battle Score - A natural number between 0 and 100 assigned to each team in a battle, based on mandatory factors evaluated automatically and optional factors evaluated manually by educators
+    \item Battle ranking - A ranking that lists students in order of performance. This ranking is determined by the battle score obtained by each student in the specific battle.
+    \item Tournament Ranking - A ranking that lists students in order of performance within a single tournament on the CKB platform. This ranking is determined by summing the scores obtained by each student in all the code kata battles that make up the tournament they participated in
+    \end{itemize}
+    
+\subsubsection{Acronyms}
+\begin{itemize}
+    \item CKB - Code Kada Battle.
+    \item RASD - Requirement Analysis and Specification Document. 
+    \item UI - User interface. 
+    \item UML - Unified Modelling Language.
+\end{itemize}
+\subsubsection{Abbreviations}
+\begin{itemize}
+    \item WP - World Phenomena.
+    \item SP - Shared Phenomena.
+    \item G - Goal
+    \item R- Requirement
+\end{itemize}
+
+
+\subsection{Revision History}
+
+\subsection{Reference Documents}
+The creation of this document is based on :
+\begin{itemize}
+    \item Slides of Software Engineering 2 course
+    \item  The specification of the RASD and DD assignment of the Software Engineering II course, held by professor Elisabetta Di Nitto at the Politecnico di Milano, A.Y 2023/2024;
+\end{itemize}
+\newpage
+\subsection{Document Structure}
+    \begin{itemize}
+        \item Chapter 1: Introduction. his chapter offers a comprehensive overview of the project, highlighting the system's scope and purpose. It also includes details about this document itself.
+
+        \item Chapter 2: Architectural Design.  Aimed at the development team, this chapter provides an in-depth look at the system's architecture. It starts by discussing the adopted paradigm and how the system is organized into various layers. Then, it presents a high-level overview of the system and its modules.
+
+        \item Chapter 3: User Interface Design. This chapter is intended for the graphical designers and contains various prototypes of the application, along with diagrams that illustrate the application's logical flow.
+
+        \item Chapter 4: Requirements Traceability.This section links the RASD (Requirements Analysis and System Design) document with the DD (Design Document), offering a complete mapping of the requirements and goals outlined in the RASD to the logical modules presented in this document.
+
+        \item Section 5: The final section is directed towards the development team and describes the procedures for implementing, testing, and integrating the software components. It includes detailed descriptions of the main functionalities, as well as a comprehensive report on how to implement and test them.
+    \end{itemize}
+
+
