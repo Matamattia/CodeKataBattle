@@ -16,7 +16,7 @@ public class Tournament {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "registrationDeadline")
+    @Column(name = "registrationdeadline")
     private Date registrationDeadline;
 
     @Column(name = "description", columnDefinition = "TEXT")

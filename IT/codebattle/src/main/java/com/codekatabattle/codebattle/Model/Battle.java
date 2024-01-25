@@ -9,36 +9,36 @@ import java.io.Serializable;
 @IdClass(Battle.BattleId.class)
 public class Battle {
     @Id
-    @Column(name = "battleId")
+    @Column(name = "battleid")
     private Integer battleId;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "tournamentId", referencedColumnName = "id")
+    @JoinColumn(name = "tournamentid", referencedColumnName = "id")
     private Tournament tournament;
 
-    @Column(name = "linkRepository", columnDefinition = "TEXT")
+    @Column(name = "linkrepository", columnDefinition = "TEXT")
     private String linkRepository;
 
-    @Column(name = "minStudent")
+    @Column(name = "minstudent")
     private Integer minStudent;
 
-    @Column(name = "maxStudent")
+    @Column(name = "maxstudent")
     private Integer maxStudent;
 
-    @Column(name = "descriptionCodeKata", columnDefinition = "TEXT")
+    @Column(name = "descriptioncodekata", columnDefinition = "TEXT")
     private String descriptionCodeKata;
 
-    @Column(name = "codeKataTests")
+    @Column(name = "codekatatests")
     private byte[] codeKataTests;
 
-    @Column(name = "registrationDeadline")
+    @Column(name = "registrationdeadline")
     private Date registrationDeadline;
 
-    @Column(name = "submissionDeadline")
+    @Column(name = "submissiondeadline")
     private Date submissionDeadline;
 
-    @Column(name = "isEvaluatedManual")
+    @Column(name = "isEvaluatedmanual")
     private Boolean isEvaluatedManual;
 
     // Costruttori, getter e setter

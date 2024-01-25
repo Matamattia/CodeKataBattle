@@ -10,12 +10,12 @@ public class AuthorizedEducator {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "tournamentId", referencedColumnName = "id")
+    @JoinColumn(name = "tournamentid", referencedColumnName = "id")
     private Tournament tournament;
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "authorizedEducator", referencedColumnName = "email")
+    @JoinColumn(name = "authorizededucator", referencedColumnName = "email")
     private Educator educator;
 
 
