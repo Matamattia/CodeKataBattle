@@ -2,9 +2,12 @@ package com.codekatabattle.codebattle.Model;
 
 import jakarta.persistence.*;
 
+@Entity
+@Table(name = "ManualEvaluation")
 public class ManualEvaluation {
     @Id
     @OneToOne
+    @MapsId("project")
     @JoinColumn(name = "automatedevaluationid", referencedColumnName = "projectid")
     private AutomatedEvaluation automatedEvaluation;
 

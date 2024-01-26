@@ -7,7 +7,8 @@ import jakarta.persistence.*;
 public class AutomatedEvaluation {
     @Id
     @OneToOne
-    @JoinColumn(name = "projectId", referencedColumnName = "projectId")
+    @MapsId("projectid")
+    @JoinColumn(name = "projectid", referencedColumnName = "projectid")
     private Project project;
 
     @Column(name = "functionalScore")
