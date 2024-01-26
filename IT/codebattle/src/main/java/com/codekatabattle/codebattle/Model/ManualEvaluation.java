@@ -6,8 +6,11 @@ import jakarta.persistence.*;
 @Table(name = "ManualEvaluation")
 public class ManualEvaluation {
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "manualid ")
+    private Integer id;
+
     @OneToOne
-    @MapsId("project")
     @JoinColumn(name = "automatedevaluationid", referencedColumnName = "projectid")
     private AutomatedEvaluation automatedEvaluation;
 

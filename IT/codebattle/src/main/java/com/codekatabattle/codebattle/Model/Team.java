@@ -20,7 +20,6 @@ public class Team {
     })
     private Battle battle;
 
-    // Costruttori, getter e setter
 
     public Integer getTeamId() {
         return teamId;

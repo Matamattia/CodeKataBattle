@@ -83,20 +83,24 @@ CREATE TABLE Project (
 
 
 CREATE TABLE AutomatedEvaluation (
-    projectId INT NOT NULL,
+	automatedId INT,
+    projectId INT NOT NULL UNIQUE,
     functionalScore FLOAT,
     timelinessScore FLOAT,
     totalScore FLOAT,
-    PRIMARY KEY (projectId),
+    PRIMARY KEY (automatedId),
     FOREIGN KEY (projectId) REFERENCES Project(projectId)
 );
 
 
+
+
 CREATE TABLE ManualEvaluation (
-    automatedEvaluationId INT NOT NULL,
+	manualId INT,
+    automatedEvaluationId INT NOT NULL UNIQUE,
     educatorEmail VARCHAR(255) NOT NULL,
     personalScore FLOAT,
-    PRIMARY KEY (automatedEvaluationId),
+	PRIMARY KEY (manualId),
     FOREIGN KEY (automatedEvaluationId) REFERENCES AutomatedEvaluation(projectId),
     FOREIGN KEY (educatorEmail) REFERENCES Educator(email)
 );
