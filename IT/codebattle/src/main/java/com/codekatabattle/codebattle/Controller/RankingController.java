@@ -44,10 +44,10 @@ public class RankingController {
 
 
     @PostMapping("/calculateBattleRanking")
-public ResponseEntity<String> calculateBattleRanking(@RequestParam int battleId, @RequestParam int tournamentId) {
-    rankingService.calculateBattleRanking(battleId, tournamentId);
-    return ResponseEntity.ok("Calculated Battle Ranking");
-}
+    public ResponseEntity<String> calculateBattleRanking(@RequestParam int battleId, @RequestParam int tournamentId) {
+        rankingService.calculateBattleRanking(battleId, tournamentId);
+        return ResponseEntity.ok("Calculated Battle Ranking");
+    }
 
 
 
