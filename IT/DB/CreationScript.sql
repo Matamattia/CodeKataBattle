@@ -34,6 +34,13 @@ CREATE TABLE AuthorizedEducators(
     FOREIGN KEY (tournamentId) REFERENCES Tournament(id)
     
 );
+CREATE TABLE StudentTournament(
+	tournament INTEGER,
+	student VARCHAR(255),
+	PRIMARY KEY (tournament,student),
+	FOREIGN KEY (tournament) REFERENCES Tournament(id),
+    FOREIGN KEY (student) REFERENCES Student(email)
+);
 
 CREATE TABLE Battle (
     battleId INT NOT NULL,

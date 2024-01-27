@@ -18,16 +18,10 @@ public class AuthorizedEducator {
     @JoinColumn(name = "authorizededucator", referencedColumnName = "email")
     private Educator educator;
 
-
-
-
-
-
     public static class AuthorizedEducatorsId implements Serializable {
         private Integer tournament;
         private String educator;
 
-        // Costruttori, getters, setters, equals, hashCode
 
         @Override
         public boolean equals(Object o) {
