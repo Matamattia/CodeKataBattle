@@ -47,7 +47,11 @@ public class Battle {
         private Integer battleId;
         private Integer tournament;
 
+        
         // Costruttori, getter e setter, equals, hashCode
+
+      
+        
 
         @Override
         public boolean equals(Object o) {
@@ -68,6 +72,26 @@ public class Battle {
             int result = battleId != null ? battleId.hashCode() : 0;
             result = 31 * result + (tournament != null ? tournament.hashCode() : 0);
             return result;
+        }
+
+
+        public Integer getBattleId() {
+            return battleId;
+        }
+
+
+        public void setBattleId(Integer battleId) {
+            this.battleId = battleId;
+        }
+
+
+        public Integer getTournament() {
+            return tournament;
+        }
+
+
+        public void setTournament(Integer tournament) {
+            this.tournament = tournament;
         }
     }
 }

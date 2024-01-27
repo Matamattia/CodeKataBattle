@@ -1,3 +1,4 @@
+
 package com.codekatabattle.codebattle.Model;
 
 import jakarta.persistence.*;

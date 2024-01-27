@@ -23,6 +23,9 @@ public class AutomatedEvaluation {
     @Column(name = "totalScore")
     private Float totalScore;
 
+
+    
+
     public Project getProject() {
         return project;
     }
@@ -78,6 +81,14 @@ public class AutomatedEvaluation {
         } else if (!project.equals(other.project))
             return false;
         return true;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     
