@@ -40,6 +40,7 @@ public class Battle {
 
     @Column(name = "isEvaluatedmanual")
     private Boolean isEvaluatedManual;
+    
 
     // Costruttori, getter e setter
 
@@ -93,5 +94,105 @@ public class Battle {
         public void setTournament(Integer tournament) {
             this.tournament = tournament;
         }
+    }
+
+
+    public Integer getBattleId() {
+        return battleId;
+    }
+
+
+    public void setBattleId(Integer battleId) {
+        this.battleId = battleId;
+    }
+
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
+    }
+
+
+    public String getLinkRepository() {
+        return linkRepository;
+    }
+
+
+    public void setLinkRepository(String linkRepository) {
+        this.linkRepository = linkRepository;
+    }
+
+
+    public Integer getMinStudent() {
+        return minStudent;
+    }
+
+
+    public void setMinStudent(Integer minStudent) {
+        this.minStudent = minStudent;
+    }
+
+
+    public Integer getMaxStudent() {
+        return maxStudent;
+    }
+
+
+    public void setMaxStudent(Integer maxStudent) {
+        this.maxStudent = maxStudent;
+    }
+
+
+    public String getDescriptionCodeKata() {
+        return descriptionCodeKata;
+    }
+
+
+    public void setDescriptionCodeKata(String descriptionCodeKata) {
+        this.descriptionCodeKata = descriptionCodeKata;
+    }
+
+
+    public byte[] getCodeKataTests() {
+        return codeKataTests;
+    }
+
+
+    public void setCodeKataTests(byte[] codeKataTests) {
+        this.codeKataTests = codeKataTests;
+    }
+
+
+    public Date getRegistrationDeadline() {
+        return registrationDeadline;
+    }
+
+
+    public void setRegistrationDeadline(Date registrationDeadline) {
+        this.registrationDeadline = registrationDeadline;
+    }
+
+
+    public Date getSubmissionDeadline() {
+        return submissionDeadline;
+    }
+
+
+    public void setSubmissionDeadline(Date submissionDeadline) {
+        this.submissionDeadline = submissionDeadline;
+    }
+
+
+    public Boolean getIsEvaluatedManual() {
+        return isEvaluatedManual;
+    }
+
+
+    public void setIsEvaluatedManual(Boolean isEvaluatedManual) {
+        this.isEvaluatedManual = isEvaluatedManual;
     }
 }
