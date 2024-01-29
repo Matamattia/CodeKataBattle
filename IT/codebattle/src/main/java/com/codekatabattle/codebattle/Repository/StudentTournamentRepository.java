@@ -12,4 +12,7 @@ public interface StudentTournamentRepository extends JpaRepository<StudentTourna
     //List<StudentTournament> findByStudentEmail(String email);
     @Query("SELECT st.tournament.id FROM StudentTournament st WHERE st.student.email = :email")
     List<Integer> findTournamentIdsByStudentEmail(String email);
+
+    List<StudentTournament> findByStudentEmail(String email);
+
 }

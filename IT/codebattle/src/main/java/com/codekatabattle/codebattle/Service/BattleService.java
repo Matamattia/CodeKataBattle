@@ -1,8 +1,9 @@
 package com.codekatabattle.codebattle.Service;
-
+import java.sql.Date;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.quartz.JobBuilder;
 import org.quartz.JobDetail;
@@ -15,8 +16,10 @@ import org.springframework.stereotype.Service;
 
 import com.codekatabattle.codebattle.Model.Battle;
 import com.codekatabattle.codebattle.Model.Project;
+import com.codekatabattle.codebattle.Model.TeamParticipant;
 import com.codekatabattle.codebattle.Repository.BattleRepository;
 import com.codekatabattle.codebattle.Repository.ProjectRepository;
+import com.codekatabattle.codebattle.Repository.TeamParticipantRepository;
 
 import Scheduler.BattleDeadlineJob;
 
@@ -31,6 +34,9 @@ public class BattleService {
     private ProjectRepository projectRepository;
     @Autowired
     private Scheduler scheduler;
+
+    private TeamParticipantRepository teamParticipantRepository;
+
 
 
     
@@ -96,6 +102,16 @@ public class BattleService {
         }
         
         return true;
+    }
+
+
+
+     public List<Battle> getBattlesForStudent(String studentEmail) {
+        List<TeamParticipant> teamParticipants = teamParticipantRepository.findByStudentEmail(studentEmail);
+        return teamParticipants.stream()
+                               .map(teamParticipant -> teamParticipant.getTeam().getBattle())
+                               .distinct()
+                               .collect(Collectors.toList());
     }
 
 }

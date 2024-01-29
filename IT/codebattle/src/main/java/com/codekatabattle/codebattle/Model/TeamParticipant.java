@@ -58,5 +58,21 @@ public class TeamParticipant {
         // Costruttori, getter e setter, equals, hashCode
     }
 
+    public Team getTeam() {
+        return team;
+    }
+
+    public void setTeam(Team team) {
+        this.team = team;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    
     
 }

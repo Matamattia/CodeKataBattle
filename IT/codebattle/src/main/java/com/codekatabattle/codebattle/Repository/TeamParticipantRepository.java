@@ -16,4 +16,7 @@ public interface TeamParticipantRepository extends JpaRepository<TeamParticipant
     @Query("SELECT DISTINCT tp.student.email FROM TeamParticipant tp WHERE tp.team.teamId = :teamId")
     List<String> findStudentEmailsByTeamId(@Param("teamId") Integer teamId);
 
+    List<TeamParticipant> findByStudentEmail(String email);
+
+
 }
