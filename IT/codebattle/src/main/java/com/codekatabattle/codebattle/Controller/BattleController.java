@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codekatabattle.codebattle.DTO.JoinTeamDTO;
 import com.codekatabattle.codebattle.Model.Battle;
 import com.codekatabattle.codebattle.Model.Project;
 import com.codekatabattle.codebattle.Model.Team;
@@ -86,10 +87,21 @@ public class BattleController {
         Team joinedTeam = teamService.createTeam(team);
         return ResponseEntity.ok(joinedTeam);
     }
-    
+    /* 
     @PostMapping("/joinTeam")
     public ResponseEntity<TeamParticipant> joinTeam(@RequestBody TeamParticipant teamParticipant) {
         TeamParticipant joinedTeam = teamService.joinTeam(teamParticipant);
+        return ResponseEntity.ok(joinedTeam);
+    }*/
+
+    @PostMapping("/join")
+    public ResponseEntity<TeamParticipant> joinTeam(@RequestBody JoinTeamDTO requestDTO) {
+   
+        String studentEmail = requestDTO.getStudentEmail();
+        Integer teamId = requestDTO.getTournamentId();
+
+        TeamParticipant joinedTeam = teamService.joinTeam(studentEmail,teamId);
+
         return ResponseEntity.ok(joinedTeam);
     }
 }
