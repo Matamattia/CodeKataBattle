@@ -5,10 +5,12 @@ import org.springframework.stereotype.Service;
 import com.codekatabattle.codebattle.Model.AuthorizedEducator;
 import com.codekatabattle.codebattle.Model.StudentTournament;
 import com.codekatabattle.codebattle.Model.Tournament;
+
 import com.codekatabattle.codebattle.Repository.AuthorizedEducatorRepository;
 import com.codekatabattle.codebattle.Repository.StudentTournamentRepository;
 
 import com.codekatabattle.codebattle.Repository.TournamentRepository;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,7 +28,6 @@ public class TournamentService {
     private StudentTournamentRepository studentTournamentRepository;
 
 
-    //tournamentsInfo non so se è utile in quanto tournaments ritorna tutti i tornei.
     public Optional<Tournament> tournamentInfo(Integer tournamentId){
         return tournamentRepository.findById(tournamentId);
     }
@@ -35,15 +36,22 @@ public class TournamentService {
     public List<Tournament> tournaments() {
         return tournamentRepository.findAll();
     }
-      //quando si crea un tournament però bisogna inserire chi degli educator ha i permessi
-      public Tournament createTournament(Tournament newTournament, List<AuthorizedEducator> educators){
-        authorizedEducatorRepository.saveAll(educators);//per i permessi
-        return tournamentRepository.save(newTournament);
+      
+       public List<AuthorizedEducator> insertAuthorized(List<AuthorizedEducator> educators){
+        return authorizedEducatorRepository.saveAll(educators);   
     }
-   //return all the tournament in which the educators is autorized
+
+    public Tournament createTournament(Tournament tournament){
+        return tournamentRepository.save(tournament);
+    }
+
+
+   //return all the tournament in which the educators is authorized
     public List<Tournament> myTournamentsEducator(String educatorEmail) {
         List<AuthorizedEducator> authorizedEntries = authorizedEducatorRepository.findByEducatorEmail(educatorEmail);
+        
         List<Tournament> tournament = new ArrayList<>();
+
         for (AuthorizedEducator authorizedEducator : authorizedEntries) {
             tournament.add(authorizedEducator.getTournament());
         }
@@ -62,17 +70,34 @@ public class TournamentService {
         
     }
     
+
+
+
+
     //delete tournament
     public void deleteTournament(Tournament tournament,String emailEducator) {
+        
         List<Tournament> tournamentAutorized = myTournamentsEducator(emailEducator);
+        
         if(tournamentAutorized.contains(tournament)){
+            
+            //fare la supposizione che nessuno studente è iscritto
+            //non sono impostati i vincoli che se elimino tournament, devo eliminare anche gli altri
+            
             tournamentRepository.deleteById(tournament.getId());
+            
         }
         
     }
+
+
+
+
+
+
     public boolean closeTournament(Integer tournamentId, String educatorEmail) {
         Optional<Tournament> tournamentOpt = tournamentRepository.findById(tournamentId);
-    
+        
         if (tournamentOpt.isPresent()) {
             List<Tournament> tournamentAutorized = myTournamentsEducator(educatorEmail);
     
@@ -91,13 +116,14 @@ public class TournamentService {
     
     
     public StudentTournament joinTournament(StudentTournament studentTournament) {
-
-        return studentTournamentRepository.save(studentTournament);
+        
+        StudentTournament stud = studentTournamentRepository.saveAndFlush(studentTournament);//flush probabilmente si può eliminare
+        return stud;
+       
     }
 
     
-    //verifyBattleActive()
-     
+    
 
     
 }

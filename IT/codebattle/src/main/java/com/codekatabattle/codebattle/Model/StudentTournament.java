@@ -11,6 +11,8 @@ import jakarta.persistence.*;
 @IdClass(StudentTournament.StudentTournamentId.class)
 public class StudentTournament {
 
+    
+
     @Id
     @ManyToOne
     @JoinColumn(name = "tournament", referencedColumnName = "id")
@@ -42,6 +44,43 @@ public class StudentTournament {
         public int hashCode() {
             return Objects.hash(tournament, student);
         }
+
+        public Integer getTournament() {
+            return tournament;
+        }
+
+        public void setTournament(Integer tournament) {
+            this.tournament = tournament;
+        }
+
+        public String getStudent() {
+            return student;
+        }
+
+        public void setStudent(String student) {
+            this.student = student;
+        }
+        
+    }
+
+    public Tournament getTournament() {
+        return tournament;
+    }
+
+    public void setTournament(Tournament tournament) {
+        this.tournament = tournament;
+    }
+
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+    @Override
+    public String toString() {
+        return "StudentTournament [tournament=" + tournament + ", student=" + student + "]";
     }
 }
 

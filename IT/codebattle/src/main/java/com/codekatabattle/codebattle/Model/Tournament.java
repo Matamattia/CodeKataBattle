@@ -62,6 +62,12 @@ public class Tournament {
         this.description = description;
     }
 
+    @Override
+    public String toString() {
+        return "Tournament [id=" + id + ", isOpen=" + isOpen + ", name=" + name + ", registrationDeadline="
+                + registrationDeadline + ", description=" + description + "]";
+    }
+
     
 
 }

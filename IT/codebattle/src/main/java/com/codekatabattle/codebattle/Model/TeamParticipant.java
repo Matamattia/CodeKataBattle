@@ -14,7 +14,7 @@ public class TeamParticipant {
 
     @Id
     @ManyToOne
-    @JoinColumn(name = "studentemail", referencedColumnName = "email")
+    @JoinColumn(name = "email", referencedColumnName = "email")
     private Student student;
 
     // Costruttori, getter e setter

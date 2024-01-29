@@ -11,7 +11,9 @@ import com.codekatabattle.codebattle.Model.TeamParticipant.TeamParticipantId;
 
 public interface TeamParticipantRepository extends JpaRepository<TeamParticipant,TeamParticipantId>{
     @Query("SELECT DISTINCT b.tournament.id FROM TeamParticipant tp JOIN tp.team t JOIN t.battle b WHERE tp.student.email = :studentEmail")
-List<Integer> findTournamentIdsByStudentEmail(@Param("studentEmail") String studentEmail);
+    List<Integer> findTournamentIdsByStudentEmail(@Param("studentEmail") String studentEmail);
 
+    @Query("SELECT DISTINCT tp.student.email FROM TeamParticipant tp WHERE tp.team.teamId = :teamId")
+    List<String> findStudentEmailsByTeamId(@Param("teamId") Integer teamId);
 
 }

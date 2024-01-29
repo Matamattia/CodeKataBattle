@@ -1,6 +1,5 @@
 package com.codekatabattle.codebattle.Service;
 
-
 import com.codekatabattle.codebattle.DTO.TournamentRankingDTO;
 import com.codekatabattle.codebattle.Model.AutomatedEvaluation;
 import com.codekatabattle.codebattle.Model.Battle;
