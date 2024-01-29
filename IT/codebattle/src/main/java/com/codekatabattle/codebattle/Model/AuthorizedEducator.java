@@ -43,6 +43,23 @@ public class AuthorizedEducator {
             result = 31 * result + (educator != null ? educator.hashCode() : 0);
             return result;
         }
+
+        public Integer getTournament() {
+            return tournament;
+        }
+
+        public void setTournament(Integer tournament) {
+            this.tournament = tournament;
+        }
+
+        public String getEducator() {
+            return educator;
+        }
+
+        public void setEducator(String educator) {
+            this.educator = educator;
+        }
+        
     }
 
 

@@ -45,17 +45,11 @@ public class Battle {
     private Boolean isEvaluatedManual;
     
 
-    // Costruttori, getter e setter
 
     public static class BattleId implements Serializable {
         private Integer battleId;
         private Integer tournament;
 
-        
-        // Costruttori, getter e setter, equals, hashCode
-
-      
-        
 
         @Override
         public boolean equals(Object o) {
