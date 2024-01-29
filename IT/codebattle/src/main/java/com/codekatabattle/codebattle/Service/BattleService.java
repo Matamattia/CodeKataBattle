@@ -1,5 +1,4 @@
 package com.codekatabattle.codebattle.Service;
-import java.sql.Date;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
