@@ -7,8 +7,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.codekatabattle.codebattle.DTO.JwtResponse;
 import com.codekatabattle.codebattle.Model.Educator;
 import com.codekatabattle.codebattle.Model.Student;
+import com.codekatabattle.codebattle.Service.JwtUtils;
 import com.codekatabattle.codebattle.Service.LoginService;
 import com.codekatabattle.codebattle.Service.SignupService;
 
@@ -18,26 +20,39 @@ public class AuthenticationController {
 
     private final LoginService loginService;
     private final SignupService signupService;
+    private final JwtUtils jwtUtils; // Servizio per la gestione dei JWT
 
     
 
-    public AuthenticationController(LoginService loginService, SignupService signupService) {
+    
+
+    public AuthenticationController(LoginService loginService, SignupService signupService, JwtUtils jwtUtils) {
         this.loginService = loginService;
         this.signupService = signupService;
+        this.jwtUtils = jwtUtils;
     }
 
     // Login Educator
     @PostMapping("/login/educator")
-    public ResponseEntity<Educator> loginEducator(@RequestBody Educator educatorDTO) {
+  public ResponseEntity<?> loginEducator(@RequestBody Educator educatorDTO) {
         Educator educator = loginService.loginEducator(educatorDTO.getEmail(), educatorDTO.getPassword());
-        return ResponseEntity.ok(educator);
+        if (educator != null) {
+            // Genera il JWT per l'utente autenticato
+            String token = jwtUtils.generateToken(educator.getEmail());
+            return ResponseEntity.ok(new JwtResponse(token)); // Crea una classe di risposta per il JWT
+        }
+        return ResponseEntity.status(401).build(); // Non autorizzato
     }
 
     // Login Student
     @PostMapping("/login/student")
-    public ResponseEntity<Student> loginStudent(@RequestBody Student studentDTO) {
+    public ResponseEntity<?> loginStudent(@RequestBody Student studentDTO) {
         Student student = loginService.loginStudent(studentDTO.getEmail(), studentDTO.getPassword());
-        return ResponseEntity.ok(student);
+        if (student != null) {
+            String token = jwtUtils.generateToken(student.getEmail());
+            return ResponseEntity.ok(new JwtResponse(token));
+        }
+        return ResponseEntity.status(401).build();
     }
 
     // Signup Educator
@@ -57,7 +72,7 @@ public class AuthenticationController {
     public ResponseEntity<Student> registerStudent(@RequestBody Student studentDTO) {
         Student newStudent = new Student();
         newStudent.setEmail(studentDTO.getEmail());
-        newStudent.setName(studentDTO.getEmail());
+        newStudent.setName(studentDTO.getName());
         newStudent.setPassword(studentDTO.getPassword());
         newStudent.setSurname(studentDTO.getSurname());
         Student registeredStudent = signupService.registerStudent(newStudent);

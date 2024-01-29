@@ -1,6 +1,6 @@
 package com.codekatabattle.codebattle.Service;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -42,17 +42,19 @@ public class BattleService {
     public Optional<Project> getProject(Integer projectId){
         return projectRepository.findById(projectId);
     }
-    public boolean verifyBattleActive(Integer tournamentId){
+     public boolean verifyBattleActive(Integer tournamentId) {
         List<Battle> battles = battleRepository.findByTournamentId(tournamentId);
-        Date currentDate = new Date();
+        LocalDateTime currentDateTime = LocalDateTime.now();
+        
         for (Battle battle : battles) {
-            Date submissionDeadline = (Date) battle.getSubmissionDeadline();
-            
-            if (submissionDeadline != null && submissionDeadline.after(currentDate)) {
+            LocalDateTime submissionDeadline = battle.getSubmissionDeadline();
+
+            if (submissionDeadline != null && submissionDeadline.isAfter(currentDateTime)) {
             } else {
                 return false;
             }
         }
+        
         return true;
     }
 

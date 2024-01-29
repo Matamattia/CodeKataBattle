@@ -9,4 +9,5 @@ import com.codekatabattle.codebattle.Model.AutomatedEvaluation;
 public interface AutomatedEvaluationRepository extends JpaRepository<AutomatedEvaluation, Integer >{
       @Query("SELECT ae FROM AutomatedEvaluation ae WHERE ae.project.projectId = :projectId")
       AutomatedEvaluation findByProjectId(@Param("projectId") int projectId);
+      
 }

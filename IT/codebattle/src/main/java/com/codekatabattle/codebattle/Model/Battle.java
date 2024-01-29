@@ -1,8 +1,8 @@
 package com.codekatabattle.codebattle.Model;
 
 import jakarta.persistence.*;
-import java.util.Date;
 import java.io.Serializable;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "Battle")
@@ -32,11 +32,14 @@ public class Battle {
     @Column(name = "codekatatests")
     private byte[] codeKataTests;
 
+    @Column(name = "filetype")
+    private String fileType;
+
     @Column(name = "registrationdeadline")
-    private Date registrationDeadline;
+    private LocalDateTime registrationDeadline;
 
     @Column(name = "submissiondeadline")
-    private Date submissionDeadline;
+    private LocalDateTime submissionDeadline;
 
     @Column(name = "isEvaluatedmanual")
     private Boolean isEvaluatedManual;
@@ -167,22 +170,22 @@ public class Battle {
     }
 
 
-    public Date getRegistrationDeadline() {
+    public LocalDateTime getRegistrationDeadline() {
         return registrationDeadline;
     }
 
 
-    public void setRegistrationDeadline(Date registrationDeadline) {
+    public void setRegistrationDeadline(LocalDateTime registrationDeadline) {
         this.registrationDeadline = registrationDeadline;
     }
 
 
-    public Date getSubmissionDeadline() {
+    public LocalDateTime getSubmissionDeadline() {
         return submissionDeadline;
     }
 
 
-    public void setSubmissionDeadline(Date submissionDeadline) {
+    public void setSubmissionDeadline(LocalDateTime submissionDeadline) {
         this.submissionDeadline = submissionDeadline;
     }
 
@@ -194,5 +197,15 @@ public class Battle {
 
     public void setIsEvaluatedManual(Boolean isEvaluatedManual) {
         this.isEvaluatedManual = isEvaluatedManual;
+    }
+
+
+    public String getFileType() {
+        return fileType;
+    }
+
+
+    public void setFileType(String fileType) {
+        this.fileType = fileType;
     }
 }

@@ -100,7 +100,7 @@ public void calculateBattleRanking(int battleId, int tournamentId) {
     Battle.BattleId id = new Battle.BattleId();
     id.setBattleId(battleId); // Assumendo che battleId sia un Integer
     id.setTournament(tournamentId);
-
+    
     Battle battle = battleRepository.findById(id).orElseThrow(() -> new EntityNotFoundException("Battle not found"));
     List<Team> teams = teamRepository.findByBattle_BattleIdAndBattle_Tournament_Id(battleId,tournamentId);
 

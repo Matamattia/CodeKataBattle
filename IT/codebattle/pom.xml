@@ -43,6 +43,38 @@
     		<groupId>org.springframework.boot</groupId>
     		<artifactId>spring-boot-starter-security</artifactId>
 		</dependency>
+
+
+		<dependency>
+        <groupId>org.kohsuke</groupId>
+        <artifactId>github-api</artifactId>
+        <version>1.133</version>
+    </dependency>
+
+	<dependency>
+    <groupId>io.jsonwebtoken</groupId>
+    <artifactId>jjwt</artifactId>
+    <version>0.9.1</version>
+</dependency>
+
+	<!-- Dipendenza per Jakarta Servlet API -->
+<dependency>
+    <groupId>jakarta.servlet</groupId>
+    <artifactId>jakarta.servlet-api</artifactId>
+    <version>4.0.4</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>javax.xml.bind</groupId>
+    <artifactId>jaxb-api</artifactId>
+    <version>2.3.1</version>
+</dependency>
+<dependency>
+    <groupId>org.glassfish.jaxb</groupId>
+    <artifactId>jaxb-runtime</artifactId>
+    <version>2.3.1</version>
+</dependency>
+
 	</dependencies>
 
 	<build>

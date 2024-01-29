@@ -7,6 +7,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @Configuration
 @EnableWebSecurity
@@ -20,11 +21,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain defaultSecurityFilterChain(HttpSecurity http) throws Exception {
         http
-            .authorizeHttpRequests((authz) -> authz
-                .anyRequest().permitAll()
-            )
-            .csrf().disable(); // Se necessario, può essere rimosso o modificato
+    .authorizeHttpRequests(authz -> authz
+        .requestMatchers("/api/auth/**").permitAll()
+        .anyRequest().authenticated()
+    )
+    .csrf().disable()
+     .addFilterBefore(jwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 
         return http.build();
+    }
+
+    @Bean
+    public JwtTokenFilter jwtTokenFilter() {
+        return new JwtTokenFilter(); // Assumi che tu abbia un JwtTokenFilter
     }
 }

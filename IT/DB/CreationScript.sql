@@ -49,6 +49,7 @@ CREATE TABLE Battle (
     minStudent INT,
     maxStudent INT,
     descriptionCodeKata TEXT,
+    fileType VARCHAR(255),
 	codeKataTests bytea,
     registrationDeadline DATE,
     submissionDeadline DATE,
