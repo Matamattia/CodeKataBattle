@@ -1,6 +1,8 @@
 package com.codekatabattle.codebattle.Service;
 
 import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -51,16 +53,17 @@ public class BattleService {
     }
     
 
-    private void scheduleDeadlineJob(Battle battle, Date deadline, String deadlineType) {
+    private void scheduleDeadlineJob(Battle battle, LocalDateTime deadline, String deadlineType) {
         JobDetail jobDetail = JobBuilder.newJob(BattleDeadlineJob.class)
             .withIdentity("battleDeadlineJob-" + deadlineType + "-" + battle.getBattleId(), "battles")
             .usingJobData("battleId", battle.getBattleId())
             .usingJobData("deadlineType", deadlineType)
             .build();
 
+            Date startDate = Date.from(deadline.atZone(ZoneId.systemDefault()).toInstant());
         Trigger trigger = TriggerBuilder.newTrigger()
             .withIdentity("trigger-" + deadlineType + "-" + battle.getBattleId(), "battles")
-            .startAt(deadline)
+            .startAt(startDate)
             .build();
 
         try {
