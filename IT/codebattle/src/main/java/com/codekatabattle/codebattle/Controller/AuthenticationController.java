@@ -38,7 +38,7 @@ public class AuthenticationController {
         Educator educator = loginService.loginEducator(educatorDTO.getEmail(), educatorDTO.getPassword());
         if (educator != null) {
             // Genera il JWT per l'utente autenticato
-            String token = jwtUtils.generateToken(educator.getEmail());
+            String token = jwtUtils.generateToken(educator.getEmail(),"educator");//aggiunto
             return ResponseEntity.ok(new JwtResponse(token)); // Crea una classe di risposta per il JWT
         }
         return ResponseEntity.status(401).build(); // Non autorizzato
@@ -49,7 +49,7 @@ public class AuthenticationController {
     public ResponseEntity<?> loginStudent(@RequestBody Student studentDTO) {
         Student student = loginService.loginStudent(studentDTO.getEmail(), studentDTO.getPassword());
         if (student != null) {
-            String token = jwtUtils.generateToken(student.getEmail());
+            String token = jwtUtils.generateToken(student.getEmail(),"student");
             return ResponseEntity.ok(new JwtResponse(token));
         }
         return ResponseEntity.status(401).build();

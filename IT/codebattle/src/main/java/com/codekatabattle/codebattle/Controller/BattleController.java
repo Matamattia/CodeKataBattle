@@ -10,15 +10,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.codekatabattle.codebattle.DTO.BattleDTO;
 import com.codekatabattle.codebattle.DTO.JoinTeamDTO;
 import com.codekatabattle.codebattle.Model.Battle;
 import com.codekatabattle.codebattle.Model.Project;
 import com.codekatabattle.codebattle.Model.Team;
 import com.codekatabattle.codebattle.Model.TeamParticipant;
+import com.codekatabattle.codebattle.Model.Tournament;
 import com.codekatabattle.codebattle.Service.BattleService;
 import com.codekatabattle.codebattle.Service.TeamService;
+import com.codekatabattle.codebattle.Service.TournamentService;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
+import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.Date;
 import java.util.Optional;
 
 @RestController
@@ -28,6 +37,8 @@ public class BattleController {
     private BattleService battleService;
     @Autowired
     private TeamService teamService;
+    @Autowired
+    private TournamentService tournamentService;
 
 
     //il problema è che per url dovrebbe inviare più id. Una soluzione può essere inviare solo l'id della battaglia e non quello del torneo
@@ -45,7 +56,35 @@ public class BattleController {
     //checked V
     // Create a new battle
     @PostMapping("/create")
-    public ResponseEntity<Battle> createBattle(@RequestBody Battle battle) {
+    public ResponseEntity<Battle> createBattle(@RequestParam("battleData") String battleDTOJson,
+    @RequestParam("codeKataTests") MultipartFile codeKataTests) throws IOException {
+        
+        ObjectMapper objectMapper = new ObjectMapper();
+        BattleDTO battleDTO = objectMapper.readValue(battleDTOJson, BattleDTO.class);
+        System.out.println("submission :" + battleDTO.getSubmissionDeadline());
+        Battle battle = new Battle();
+        Optional<Tournament> tournament = tournamentService.tournamentInfo(battleDTO.getTournamentId());
+        
+        battle.setBattleId(battleDTO.getBattleId());
+        battle.setTournament(tournament.get());
+        battle.setLinkRepository(battleDTO.getLinkRepository());
+        battle.setMinStudent(battleDTO.getMinStudent());
+        battle.setMaxStudent(battleDTO.getMaxStudent());
+        battle.setDescriptionCodeKata(battleDTO.getDescriptionCodeKata());
+        battle.setFileType(battleDTO.getFileType());
+        battle.setIsEvaluatedManual(battleDTO.getIsEvaluatedManual());
+        Date registrationDeadline = battleDTO.getRegistrationDeadline();
+        Date submissionDeadline = battleDTO.getSubmissionDeadline();
+        LocalDateTime registrationLocalDateTime = dateToLocalDateTime(registrationDeadline);
+        LocalDateTime submissionLocalDateTime = dateToLocalDateTime(submissionDeadline);
+        battle.setRegistrationDeadline(registrationLocalDateTime);
+        battle.setSubmissionDeadline(submissionLocalDateTime);
+        //To manage the multipart
+        if (!codeKataTests.isEmpty()) {
+        byte[] fileData = codeKataTests.getBytes();
+        battle.setCodeKataTests(fileData);
+        // Imposta il file nel tuo oggetto Battle
+    }
         Battle savedBattle = battleService.saveBattle(battle);
         return ResponseEntity.ok(savedBattle);
     }
@@ -104,4 +143,12 @@ public class BattleController {
 
         return ResponseEntity.ok(joinedTeam);
     }
+
+
+
+
+private LocalDateTime dateToLocalDateTime(Date date) {
+    return date.toInstant().atZone(ZoneId.systemDefault()).toLocalDateTime();
+}
+
 }
