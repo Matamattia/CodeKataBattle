@@ -47,6 +47,9 @@ public class BattleService {
     //add battle, pointless to check whether the educator has permissions because where he doesn't have permissions, 
     //the button doesn't really show up at all
     public Battle saveBattle(Battle battle) {
+        Integer idBattle = battleRepository.findMaxBattleId();
+        idBattle += 1;//id Battle
+        battle.setBattleId(idBattle);
         Battle savedBattle = battleRepository.save(battle);
         // Pianifica un job Quartz per la registrationDeadline
         scheduleDeadlineJob(savedBattle, savedBattle.getRegistrationDeadline(), "Registration");
@@ -114,6 +117,10 @@ public class BattleService {
                                .map(teamParticipant -> teamParticipant.getTeam().getBattle())
                                .distinct()
                                .collect(Collectors.toList());
+    }
+
+    public List<Battle> getBattlesForEducator(List<Integer> tournamentIDs){
+        return battleRepository.findBattlesByTournamentIds(tournamentIDs);
     }
 
 }
