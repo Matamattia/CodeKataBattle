@@ -13,6 +13,10 @@ public class Team {
     @Column(name = "name")
     private String name;
 
+    @Column(name = "codiceinvito")
+    private String codiceInvito;
+
+
     @ManyToOne
     @JoinColumns({
         @JoinColumn(name = "battleid", referencedColumnName = "battleid"),
@@ -20,7 +24,7 @@ public class Team {
     })
     private Battle battle;
 
-
+    
     public Integer getTeamId() {
         return teamId;
     }
@@ -68,6 +72,14 @@ public class Team {
         } else if (!teamId.equals(other.teamId))
             return false;
         return true;
+    }
+
+    public String getCodiceInvito() {
+        return codiceInvito;
+    }
+
+    public void setCodiceInvito(String codiceInvito) {
+        this.codiceInvito = codiceInvito;
     }
     
 }

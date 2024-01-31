@@ -25,7 +25,6 @@ public class GitHubController {
     AutomatedEvaluationService automatedEvaluationService;
 
 
-    //CONSIDERA CHE HO CAMBIATO DATE IN LOCALDATETIME IN BATTLE
     //Permette ad ogni push di calcolare il nuovo ranking della battaglia, basandosi sui parametri forniti
     @PostMapping("/webhook")
     public ResponseEntity<String> handleGitHubPush(@RequestBody GitHubPushPayload payload) {

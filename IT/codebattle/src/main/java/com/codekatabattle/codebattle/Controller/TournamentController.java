@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.codekatabattle.codebattle.DTO.EducatorEmailDTO;
 import com.codekatabattle.codebattle.Model.AuthorizedEducator;
+import com.codekatabattle.codebattle.Model.Student;
 import com.codekatabattle.codebattle.Model.StudentTournament;
 import com.codekatabattle.codebattle.Model.Tournament;
+import com.codekatabattle.codebattle.Repository.StudentRepository;
+import com.codekatabattle.codebattle.Service.StudentService;
 import com.codekatabattle.codebattle.Service.TournamentService;
 
 @RestController
@@ -23,6 +26,8 @@ import com.codekatabattle.codebattle.Service.TournamentService;
 public class TournamentController {
     @Autowired
     private TournamentService tournamentService;
+    @Autowired
+    private StudentService studentService;
 
 //checked V
     @GetMapping("/myTournament")
@@ -70,13 +75,29 @@ public ResponseEntity<List<Tournament>> getStudentTournaments(@RequestParam Stri
 }
 
     
-//checked V
-    @PostMapping("/join")
-    public ResponseEntity<StudentTournament> joinTournament(@RequestBody StudentTournament studentTournament) {
-        
-        StudentTournament joinedTournament = tournamentService.joinTournament(studentTournament);
-        return ResponseEntity.ok(joinedTournament);
+@PostMapping("/join")
+public ResponseEntity<StudentTournament> joinTournament(@RequestParam Integer tournamentId, @RequestParam String studentEmail) {
+    // Crea un nuovo oggetto StudentTournament
+    StudentTournament studentTournament = new StudentTournament();
+    
+    // Trova il torneo e lo studente in base agli ID forniti (gestire i casi in cui non vengono trovati)
+    Optional<Tournament> tournament = tournamentService.tournamentInfo(tournamentId);
+    Optional<Student> student = studentService.getStudentByEmail(studentEmail);
+
+    if (tournament == null || student == null) {
+        // Gestisci il caso in cui il torneo o lo studente non vengono trovati
+        return ResponseEntity.badRequest().build();
     }
+
+    studentTournament.setTournament(tournament.get());
+    studentTournament.setStudent(student.get());
+
+    // Registra lo studente al torneo
+    StudentTournament joinedTournament = tournamentService.joinTournament(studentTournament);
+
+    return ResponseEntity.ok(joinedTournament);
+}
+
 
 
     //checked V, vi è il problema di cascade per i vincoli
@@ -102,6 +123,25 @@ public ResponseEntity<List<Tournament>> getStudentTournaments(@RequestParam Stri
         return ResponseEntity.badRequest().body(false);
     }
     }
+
+
+    @GetMapping("/checkRegistration")
+public ResponseEntity<Boolean> checkRegistration(@RequestParam Integer tournamentId, @RequestParam String studentEmail) {
+    // Trova il torneo in base all'ID fornito
+    Optional<Tournament> tournament = tournamentService.tournamentInfo(tournamentId);
+    
+    if (!tournament.isPresent()) {
+        // Il torneo non è stato trovato
+        return ResponseEntity.notFound().build();
+    }
+
+    // Verifica se lo studente è registrato al torneo
+    boolean isRegistered = tournamentService.isStudentRegistered(tournament.get(), studentEmail);
+
+   
+    return ResponseEntity.ok(isRegistered);
+}
+
 
 
 }

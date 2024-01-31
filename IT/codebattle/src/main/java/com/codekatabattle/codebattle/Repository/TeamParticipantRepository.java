@@ -6,6 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import com.codekatabattle.codebattle.Model.Battle;
+import com.codekatabattle.codebattle.Model.Student;
 import com.codekatabattle.codebattle.Model.TeamParticipant;
 import com.codekatabattle.codebattle.Model.TeamParticipant.TeamParticipantId;
 
@@ -17,6 +19,10 @@ public interface TeamParticipantRepository extends JpaRepository<TeamParticipant
     List<String> findStudentEmailsByTeamId(@Param("teamId") Integer teamId);
 
     List<TeamParticipant> findByStudentEmail(String email);
+
+
+    boolean existsByTeam_BattleAndStudent(Battle battle, Student student);
+
 
 
 }

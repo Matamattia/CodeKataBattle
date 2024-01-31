@@ -10,6 +10,8 @@ public interface TeamRepository extends JpaRepository<Team, Integer>{
 
     Team findByName(String name);
 
+    Team findByCodiceInvito(String codiceInvito);
+
 
 
     

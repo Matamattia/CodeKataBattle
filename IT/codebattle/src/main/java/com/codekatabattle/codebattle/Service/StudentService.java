@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.codekatabattle.codebattle.Model.Student;
 import com.codekatabattle.codebattle.Repository.StudentRepository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -15,5 +16,8 @@ public class StudentService {
 
     public Optional<Student> getStudentByEmail(String email) {
         return studentRepository.findById(email);
+    }
+    public List<Student> getAllStudents() {
+        return studentRepository.findAll();
     }
 }

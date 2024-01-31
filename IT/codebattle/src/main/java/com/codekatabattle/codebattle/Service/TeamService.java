@@ -21,6 +21,7 @@ public class TeamService {
 
     //createTeam
     public Team createTeam(Team team) {
+        
         return teamRepository.save(team);
     }
     /* 
@@ -37,6 +38,10 @@ public class TeamService {
         
         
         return teamParticipantRepository.save(teamParticipant);
+    }
+
+    public Team findByCodiceInvito(String codiceInvito) {
+        return teamRepository.findByCodiceInvito(codiceInvito);
     }
     
     

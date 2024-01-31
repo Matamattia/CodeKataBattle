@@ -17,6 +17,7 @@ import org.springframework.stereotype.Service;
 
 import com.codekatabattle.codebattle.Model.Battle;
 import com.codekatabattle.codebattle.Model.Project;
+import com.codekatabattle.codebattle.Model.Student;
 import com.codekatabattle.codebattle.Model.TeamParticipant;
 import com.codekatabattle.codebattle.Repository.BattleRepository;
 import com.codekatabattle.codebattle.Repository.ProjectRepository;
@@ -76,6 +77,7 @@ public class BattleService {
 
         try {
             scheduler.scheduleJob(jobDetail, trigger);
+            System.out.println("ENTRATO IN SCHEDULEDEADLINEJOB");
         } catch (SchedulerException e) {
             // Gestisci l'eccezione
         }
@@ -119,8 +121,36 @@ public class BattleService {
                                .collect(Collectors.toList());
     }
 
+
     public List<Battle> getBattlesForEducator(List<Integer> tournamentIDs){
         return battleRepository.findBattlesByTournamentIds(tournamentIDs);
     }
+
+
+    public List<Battle> getBattlesByTournament(Integer tournamentId) {
+        return battleRepository.findByTournamentId(tournamentId);
+
+    }
+    public boolean checkUserRegistration(Integer battleId, String studentEmail) {
+        Battle.BattleId battleIdObj = new Battle.BattleId();
+        battleIdObj.setBattleId(battleId);
+    
+        Battle battle = battleRepository.findById(battleIdObj).orElse(null);
+    
+        if (battle == null) {
+            return false; // La battaglia non esiste
+        }
+    
+        // Verifica se lo studente è registrato per questa battaglia
+        Student student = new Student();
+        student.setEmail(studentEmail);
+    
+        if (teamParticipantRepository.existsByTeam_BattleAndStudent(battle, student)) {
+            return true; // Lo studente è registrato per questa battaglia
+        }
+    
+        return false; // Lo studente non è registrato per questa battaglia
+    }
+    
 
 }

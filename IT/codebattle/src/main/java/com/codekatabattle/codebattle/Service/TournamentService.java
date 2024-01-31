@@ -3,6 +3,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.codekatabattle.codebattle.Model.AuthorizedEducator;
+import com.codekatabattle.codebattle.Model.Student;
 import com.codekatabattle.codebattle.Model.StudentTournament;
 import com.codekatabattle.codebattle.Model.Tournament;
 
@@ -26,6 +27,9 @@ public class TournamentService {
     private AuthorizedEducatorRepository authorizedEducatorRepository;
     @Autowired
     private StudentTournamentRepository studentTournamentRepository;
+
+    @Autowired
+    private StudentService studentService;
 
 
     public Optional<Tournament> tournamentInfo(Integer tournamentId){
@@ -121,6 +125,29 @@ public class TournamentService {
         return stud;
        
     }
+
+
+    public boolean isStudentRegistered(Tournament tournament, String studentEmail) {
+    // Cerca lo studente in base all'email
+    Optional<Student> student = studentService.getStudentByEmail(studentEmail);
+
+    if (!student.isPresent()) {
+        // Lo studente non è stato trovato
+        return false;
+    }
+
+    // Crea un oggetto StudentTournamentId con l'ID del torneo e l'email dello studente
+    StudentTournament.StudentTournamentId studentTournamentId = new StudentTournament.StudentTournamentId();
+    studentTournamentId.setTournament(tournament.getId());
+    studentTournamentId.setStudent(studentEmail);
+
+    // Cerca lo studentTournament utilizzando l'ID del torneo e l'email dello studente
+    Optional<StudentTournament> studentTournament = studentTournamentRepository.findById(studentTournamentId);
+    
+    
+    return studentTournament.isPresent();
+}
+
 
     
 
