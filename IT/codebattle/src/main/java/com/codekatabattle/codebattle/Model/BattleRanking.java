@@ -1,6 +1,10 @@
 package com.codekatabattle.codebattle.Model;
 
 import java.io.Serializable;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.*;
 
 
@@ -10,6 +14,7 @@ import jakarta.persistence.*;
 public class BattleRanking {
     @Id
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumns({
         @JoinColumn(name = "battleid", referencedColumnName = "battleid"),
         @JoinColumn(name = "tournamentId", referencedColumnName = "tournamentid")

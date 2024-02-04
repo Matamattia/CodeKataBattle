@@ -17,7 +17,8 @@ public class StudentService {
     public Optional<Student> getStudentByEmail(String email) {
         return studentRepository.findById(email);
     }
-    public List<Student> getAllStudents() {
+    
+    public List<Student> getAllStudents(){
         return studentRepository.findAll();
     }
 }

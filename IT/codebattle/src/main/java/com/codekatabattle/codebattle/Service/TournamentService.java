@@ -14,6 +14,7 @@ import com.codekatabattle.codebattle.Repository.TournamentRepository;
 
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,7 +28,6 @@ public class TournamentService {
     private AuthorizedEducatorRepository authorizedEducatorRepository;
     @Autowired
     private StudentTournamentRepository studentTournamentRepository;
-
     @Autowired
     private StudentService studentService;
 
@@ -74,28 +74,22 @@ public class TournamentService {
         
     }
     
+    public boolean isEducatorAuthorizedForTournament(String educatorEmail, Integer tournamentId) {
+        List<AuthorizedEducator> authorizedEducators = authorizedEducatorRepository.findByEducatorEmail(educatorEmail);
+        return authorizedEducators.stream()
+                .anyMatch(ae -> ae.getTournament().getId().equals(tournamentId));
+    }
+    
 
 
 
 
     //delete tournament
     public void deleteTournament(Tournament tournament,String emailEducator) {
+        tournamentRepository.deleteById(tournament.getId());
         
-        List<Tournament> tournamentAutorized = myTournamentsEducator(emailEducator);
-        
-        if(tournamentAutorized.contains(tournament)){
-            
-            //fare la supposizione che nessuno studente è iscritto
-            //non sono impostati i vincoli che se elimino tournament, devo eliminare anche gli altri
-            
-            tournamentRepository.deleteById(tournament.getId());
-            
-        }
         
     }
-
-
-
 
 
 
@@ -104,7 +98,7 @@ public class TournamentService {
         
         if (tournamentOpt.isPresent()) {
             List<Tournament> tournamentAutorized = myTournamentsEducator(educatorEmail);
-    
+            
             if (tournamentAutorized.contains(tournamentOpt.get())) {
                 Tournament tournament = tournamentOpt.get();
                 tournament.setIsOpen(false);
@@ -126,7 +120,7 @@ public class TournamentService {
        
     }
 
-
+    
     public boolean isStudentRegistered(Tournament tournament, String studentEmail) {
     // Cerca lo studente in base all'email
     Optional<Student> student = studentService.getStudentByEmail(studentEmail);
@@ -147,11 +141,14 @@ public class TournamentService {
     
     return studentTournament.isPresent();
 }
-
-
-    
-
-    
+public boolean isRegistrationOpen(Integer tournamentId) {
+    Optional<Tournament> tournamentOpt = tournamentInfo(tournamentId);
+    if (tournamentOpt.isPresent()) {
+        Tournament tournament = tournamentOpt.get();
+        return new Date().before(tournament.getRegistrationDeadline());
+    }
+    return false;
+}
     
 
     

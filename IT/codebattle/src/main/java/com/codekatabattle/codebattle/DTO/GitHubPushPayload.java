@@ -1,7 +1,9 @@
 package com.codekatabattle.codebattle.DTO;
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class GitHubPushPayload {
@@ -11,6 +13,7 @@ public class GitHubPushPayload {
     @JsonProperty("repoUrl")
     private String repositoryName;
 
+    @JsonFormat(pattern = "yyyy-MM-dd'T'HH:mm:ss")
     @JsonProperty("timestamp")
     private LocalDateTime pushTime;
 
@@ -59,6 +62,13 @@ public class GitHubPushPayload {
     public void setCodeKataBattle(byte[] codeKataBattle) {
         this.codeKataBattle = codeKataBattle;
     }
+
+    @Override
+    public String toString() {
+        return "GitHubPushPayload [eventId=" + eventId + ", repositoryName=" + repositoryName + ", pushTime=" + pushTime
+                + ", functionalScore=" + functionalScore + ", codeKataBattle=" + Arrays.toString(codeKataBattle) + "]";
+    }
+    
 
     
   

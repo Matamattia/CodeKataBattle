@@ -1,5 +1,6 @@
 package com.codekatabattle.codebattle.Controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -13,13 +14,19 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.codekatabattle.codebattle.DTO.EducatorEmailDTO;
+import com.codekatabattle.codebattle.DTO.TournamenteCreateDTO;
 import com.codekatabattle.codebattle.Model.AuthorizedEducator;
+import com.codekatabattle.codebattle.Model.Educator;
+import com.codekatabattle.codebattle.Model.MailStructure;
 import com.codekatabattle.codebattle.Model.Student;
 import com.codekatabattle.codebattle.Model.StudentTournament;
 import com.codekatabattle.codebattle.Model.Tournament;
-import com.codekatabattle.codebattle.Repository.StudentRepository;
+import com.codekatabattle.codebattle.Service.BattleService;
+import com.codekatabattle.codebattle.Service.EducatorService;
+import com.codekatabattle.codebattle.Service.MailService;
 import com.codekatabattle.codebattle.Service.StudentService;
 import com.codekatabattle.codebattle.Service.TournamentService;
+
 
 @RestController
 @RequestMapping("/tournament")
@@ -27,13 +34,26 @@ public class TournamentController {
     @Autowired
     private TournamentService tournamentService;
     @Autowired
+    private EducatorService educatorService;
+    @Autowired
+    private MailService mailService;
+    @Autowired
     private StudentService studentService;
+    @Autowired
+    private BattleService battleService;
 
 //checked V
     @GetMapping("/myTournament")
     public ResponseEntity<Optional<Tournament>> getTournament(@RequestParam Integer id) {
         Optional<Tournament> tournament = tournamentService.tournamentInfo(id);
             return ResponseEntity.ok(tournament);
+        
+    }
+    @GetMapping("/statusTournament")
+    public ResponseEntity<Boolean> getStatusTournament(@RequestParam Integer id) {
+        Optional<Tournament> tournament = tournamentService.tournamentInfo(id);
+        boolean isOpen = tournament.get().getIsOpen();
+            return ResponseEntity.ok(isOpen);
         
     }
 //checked V
@@ -46,8 +66,35 @@ public class TournamentController {
 
     //checked V
     @PostMapping("/create")
-    public ResponseEntity<Tournament> createTournament(@RequestBody Tournament tournament) {
+    public ResponseEntity<Tournament> createTournament(@RequestBody TournamenteCreateDTO tournamentCreateDTO) {
+        Tournament tournament = tournamentCreateDTO.getTournament();
+        
         Tournament insertedTournament = tournamentService.createTournament(tournament);
+        //for authorized educators
+        List<String> educatorEmails = tournamentCreateDTO.getEducatorEmails();
+        List<AuthorizedEducator> authorizedEducators = new ArrayList<>();
+
+        for(String email: educatorEmails){
+            AuthorizedEducator authorizedEducator = new AuthorizedEducator();
+            authorizedEducator.setTournament(tournament); // Imposta il riferimento al torneo
+            Educator educator = educatorService.getEducatorByEmail(email).get();
+            authorizedEducator.setEducator(educator);
+            authorizedEducators.add(authorizedEducator);
+        }
+        AuthorizedEducator authorizedEducator = new AuthorizedEducator();
+        authorizedEducator.setTournament(tournament);
+        Educator creator = educatorService.getEducatorByEmail(tournamentCreateDTO.getEducatorCreator()).get();
+        authorizedEducator.setEducator(creator);
+        authorizedEducators.add(authorizedEducator);
+
+        tournamentService.insertAuthorized(authorizedEducators);
+        List<Student> students = studentService.getAllStudents();
+        for (Student student : students) {
+            
+            mailService.sendMail(student.getEmail(), new MailStructure(student.getName(),"The Tournament  " + tournament.getName()+ " with id: "+tournament.getId()+" is created" ));
+           
+        }
+        
         return ResponseEntity.ok(insertedTournament);
     }
     
@@ -74,7 +121,15 @@ public ResponseEntity<List<Tournament>> getStudentTournaments(@RequestParam Stri
     return ResponseEntity.ok(tournaments);
 }
 
+@GetMapping("/registrationStatus")
+public ResponseEntity<Boolean> getRegistrationStatus(@RequestParam Integer id) {
+    boolean isRegistrationOpen = tournamentService.isRegistrationOpen(id);
+    return ResponseEntity.ok(isRegistrationOpen);
+}
+
+
     
+//checked V
 @PostMapping("/join")
 public ResponseEntity<StudentTournament> joinTournament(@RequestParam Integer tournamentId, @RequestParam String studentEmail) {
     // Crea un nuovo oggetto StudentTournament
@@ -99,11 +154,17 @@ public ResponseEntity<StudentTournament> joinTournament(@RequestParam Integer to
 }
 
 
+@GetMapping("/isAuthorized")
+public ResponseEntity<Boolean> isAuthorized(@RequestParam String educatorEmail, @RequestParam Integer tournamentId) {
+    boolean isAuthorized = tournamentService.isEducatorAuthorizedForTournament(educatorEmail, tournamentId);
+    return ResponseEntity.ok(isAuthorized);
+}
+
+
 
     //checked V, vi è il problema di cascade per i vincoli
     @PostMapping("/delete")
     public ResponseEntity<Void> deleteTournament(@RequestParam Integer id, @RequestBody EducatorEmailDTO educatorEmail) {
-        
         Tournament tournament = tournamentService.tournamentInfo(id).orElse(null);
         if (tournament != null) {
           tournamentService.deleteTournament(tournament, educatorEmail.getEducatorEmail());
@@ -113,18 +174,45 @@ public ResponseEntity<StudentTournament> joinTournament(@RequestParam Integer to
     }
     }
 
+
+//     @PostMapping("/delete")
+//     public ResponseEntity<Boolean> deleteTournament(@RequestParam Integer id, @RequestBody EducatorEmailDTO educatorEmail) {
+//     // Verifica prima se tutte le battaglie relative al torneo non sono attive
+//         boolean battlesNotActive = battleService.verifyBattleActive(id);
+//         System.out.println(battlesNotActive);
+//     // Se ci sono battaglie attive, ritorna false
+//         if (battlesNotActive == false) {
+//             return ResponseEntity.ok(false);
+//         } else {
+//         // Altrimenti, procedi con la cancellazione del torneo
+//             Tournament tournament = tournamentService.tournamentInfo(id).orElse(null);
+            
+//             if (tournament != null) {
+//             tournamentService.deleteTournament(tournament, educatorEmail.getEducatorEmail());
+//             // Ritorna true per indicare che il torneo è stato eliminato con successo
+//             return ResponseEntity.ok(true);
+//             } else {
+//             // Se il torneo non esiste, ritorna false
+//             return ResponseEntity.ok(false);
+//         }
+//     }
+// }
+
     //checked V
     @PostMapping("/close")
     public ResponseEntity<Boolean> closeTournament(@RequestParam Integer tournamentId, @RequestBody EducatorEmailDTO educatorEmail) {
-    boolean closed = tournamentService.closeTournament(tournamentId, educatorEmail.getEducatorEmail());
-    if (closed) {
-        return ResponseEntity.ok(true);
-    } else {
-        return ResponseEntity.badRequest().body(false);
+        boolean notActive = battleService.verifyBattleActive(tournamentId);
+        System.out.println(notActive);
+        if( notActive == false){
+            return ResponseEntity.ok(false);
+        }
+        boolean closed = tournamentService.closeTournament(tournamentId, educatorEmail.getEducatorEmail());
+        if (closed) {
+            return ResponseEntity.ok(true);
+        } else {
+            return ResponseEntity.ok(false);
+        }
     }
-    }
-
-
     @GetMapping("/checkRegistration")
 public ResponseEntity<Boolean> checkRegistration(@RequestParam Integer tournamentId, @RequestParam String studentEmail) {
     // Trova il torneo in base all'ID fornito
@@ -141,7 +229,5 @@ public ResponseEntity<Boolean> checkRegistration(@RequestParam Integer tournamen
    
     return ResponseEntity.ok(isRegistered);
 }
-
-
 
 }

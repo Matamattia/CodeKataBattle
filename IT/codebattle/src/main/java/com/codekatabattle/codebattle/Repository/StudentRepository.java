@@ -6,5 +6,4 @@ import com.codekatabattle.codebattle.Model.Student;
 
 public interface StudentRepository extends JpaRepository<Student, String>{
     
-    
 }

@@ -1,5 +1,7 @@
 package com.codekatabattle.codebattle.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,7 +23,6 @@ public class TeamService {
 
     //createTeam
     public Team createTeam(Team team) {
-        
         return teamRepository.save(team);
     }
     /* 
@@ -39,10 +40,44 @@ public class TeamService {
         
         return teamParticipantRepository.save(teamParticipant);
     }
-
+    
     public Team findByCodiceInvito(String codiceInvito) {
         return teamRepository.findByCodiceInvito(codiceInvito);
     }
-    
+
+    public boolean isMemberOfTeam(String codiceInvito, String studentEmail) {
+        // Qui dovrai scrivere la logica per determinare se lo studente è membro del team.
+        // Questo esempio è semplificato e potrebbe richiedere modifiche in base alla struttura del tuo database.
+
+        Team teamOpt = teamRepository.findByCodiceInvito(codiceInvito);
+        
+        Team team = teamOpt;
+
+        return teamParticipantRepository.existsByTeam_TeamIdAndStudent_Email(team.getTeamId(), studentEmail);
+
+    }
+
+
+    public boolean isStudentInTeamForBattle(String studentEmail, Integer battleId, Integer tournamentId) {
+        // Trova tutti i team per la battaglia specificata
+        List<Team> teamsForBattle = teamRepository.findByBattle_BattleIdAndBattle_Tournament_Id(battleId, tournamentId);
+        
+        if (teamsForBattle.isEmpty()) {
+            // Se non ci sono team per la battaglia, lo studente non può far parte di un team
+            return false;
+        }
+
+        // Verifica se esiste un TeamParticipant che collega lo studente a uno dei team trovati
+        for (Team team : teamsForBattle) {
+            boolean exists = teamParticipantRepository.existsByTeam_TeamIdAndStudent_Email(team.getTeamId(), studentEmail);
+            if (exists) {
+                // Se troviamo uno studente che fa parte di un team per la battaglia, ritorniamo true
+                return true;
+            }
+        }
+
+        // Se non troviamo nessun collegamento, lo studente non fa parte di un team per questa battaglia
+        return false;
+    }
     
 }

@@ -38,7 +38,7 @@ public class EducatorInfoController {
         if (!educatorOpt.isPresent()) {
             return ResponseEntity.notFound().build();
         }
-
+        
         Educator educator = educatorOpt.get();
         List<Tournament> tournaments = tournamentService.myTournamentsEducator(email);
         //estraggo gli id dei tornei
@@ -55,5 +55,11 @@ public class EducatorInfoController {
         response.put("battles", battles);
 
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping("/all")
+    public ResponseEntity<List<Educator>> getAllEducators() {
+        List<Educator> educators = educatorService.getAllEducators();
+        return ResponseEntity.ok(educators);
     }
 }

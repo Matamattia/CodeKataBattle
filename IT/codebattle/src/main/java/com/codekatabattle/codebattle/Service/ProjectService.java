@@ -1,10 +1,16 @@
 package com.codekatabattle.codebattle.Service;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.codekatabattle.codebattle.Model.Project;
 import com.codekatabattle.codebattle.Model.Team;
 import com.codekatabattle.codebattle.Repository.ProjectRepository;
 
+
+@Service
 public class ProjectService {
+    @Autowired
     private ProjectRepository projectRepository;
 
 

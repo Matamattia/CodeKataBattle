@@ -2,6 +2,9 @@ package com.codekatabattle.codebattle.Model;
 
 import java.io.Serializable;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -11,6 +14,7 @@ public class TournamentRanking {
         @Id
     @ManyToOne
     @JoinColumn(name = "tournamentid", referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Tournament tournament;
 
     @Id

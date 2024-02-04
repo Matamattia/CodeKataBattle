@@ -23,6 +23,7 @@ public class SecurityConfig {
         http
     .authorizeHttpRequests(authz -> authz
         .requestMatchers("/api/auth/**").permitAll()
+        .requestMatchers("/webhook").permitAll()
         .anyRequest().authenticated()
     )
     .csrf().disable()

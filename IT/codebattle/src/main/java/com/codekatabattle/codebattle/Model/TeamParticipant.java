@@ -1,6 +1,9 @@
 package com.codekatabattle.codebattle.Model;
 import java.io.Serializable;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -10,6 +13,7 @@ public class TeamParticipant {
    @Id
     @ManyToOne
     @JoinColumn(name = "teamid", referencedColumnName = "teamid")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Team team;
 
     @Id

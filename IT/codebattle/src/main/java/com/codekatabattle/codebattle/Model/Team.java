@@ -1,4 +1,7 @@
 package com.codekatabattle.codebattle.Model;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.*;
 
 
@@ -10,21 +13,23 @@ public class Team {
     @Column(name = "teamid")
     private Integer teamId;
 
-    @Column(name = "name")
+
+    
+    @Column(name = "name",unique = true)
     private String name;
 
     @Column(name = "codiceinvito")
     private String codiceInvito;
 
-
     @ManyToOne
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumns({
         @JoinColumn(name = "battleid", referencedColumnName = "battleid"),
         @JoinColumn(name = "tournamentid", referencedColumnName = "tournamentid")
     })
     private Battle battle;
 
-    
+
     public Integer getTeamId() {
         return teamId;
     }

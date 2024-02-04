@@ -18,12 +18,17 @@ import org.springframework.stereotype.Service;
 import com.codekatabattle.codebattle.Model.Battle;
 import com.codekatabattle.codebattle.Model.Project;
 import com.codekatabattle.codebattle.Model.Student;
+import com.codekatabattle.codebattle.Model.Team;
 import com.codekatabattle.codebattle.Model.TeamParticipant;
+import com.codekatabattle.codebattle.Model.Battle.BattleId;
 import com.codekatabattle.codebattle.Repository.BattleRepository;
 import com.codekatabattle.codebattle.Repository.ProjectRepository;
 import com.codekatabattle.codebattle.Repository.TeamParticipantRepository;
+import com.codekatabattle.codebattle.Repository.TeamRepository;
 
 import Scheduler.BattleDeadlineJob;
+
+
 
 
 
@@ -38,6 +43,8 @@ public class BattleService {
     private Scheduler scheduler;
     @Autowired
     private TeamParticipantRepository teamParticipantRepository;
+    @Autowired
+    private TeamRepository teamRepository;
 
 
 
@@ -48,8 +55,15 @@ public class BattleService {
     //add battle, pointless to check whether the educator has permissions because where he doesn't have permissions, 
     //the button doesn't really show up at all
     public Battle saveBattle(Battle battle) {
+        
         Integer idBattle = battleRepository.findMaxBattleId();
-        idBattle += 1;//id Battle
+    
+    // Controlla se idBattle è null e assegna un valore appropriato
+    if (idBattle == null) {
+        idBattle = 0; // O un altro valore di default appropriato
+    } else {
+        idBattle += 1; // Incrementa solo se non è null
+    }
         battle.setBattleId(idBattle);
         Battle savedBattle = battleRepository.save(battle);
         // Pianifica un job Quartz per la registrationDeadline
@@ -60,24 +74,45 @@ public class BattleService {
         //return battleRepository.save(battle);
         return savedBattle;
     }
+
+
+
+
+    public List<Project> getProjectsForBattle(Integer battleId, Integer tournamentId) {
+        // Ottieni la lista di team per la battaglia specificata
+        List<Team> teams = teamRepository.findByBattle_BattleIdAndBattle_Tournament_Id(battleId, tournamentId);
+
+        // Per ogni team, ottieni il progetto associato e raccogli in una lista
+        return teams.stream()
+                    .map(team -> projectRepository.findByTeam_TeamId(team.getTeamId()))
+                    .collect(Collectors.toList());
+    }
+
     
 
     private void scheduleDeadlineJob(Battle battle, LocalDateTime deadline, String deadlineType) {
+        BattleId battleId = new BattleId();
+        battleId.setBattleId(battle.getBattleId());
+        battleId.setTournament(battle.getTournament().getId());
         JobDetail jobDetail = JobBuilder.newJob(BattleDeadlineJob.class)
-            .withIdentity("battleDeadlineJob-" + deadlineType + "-" + battle.getBattleId(), "battles")
-            .usingJobData("battleId", battle.getBattleId())
+            .withIdentity("battleDeadlineJob-" + deadlineType + "-" + battleId, "battles")
+            .usingJobData("battleId", battleId.getBattleId())  // Passando l'ID della battaglia come Integer
+            .usingJobData("tournamentId", battleId.getTournament())
             .usingJobData("deadlineType", deadlineType)
             .build();
 
-            Date startDate = Date.from(deadline.atZone(ZoneId.systemDefault()).toInstant());
+            //Date startDate = Date.from(deadline.atZone(ZoneId.systemDefault()).toInstant());
+            Date startDate = Date.from(deadline.atZone(ZoneId.of("Europe/Rome")).toInstant());
+            System.out.println(startDate);
+            
         Trigger trigger = TriggerBuilder.newTrigger()
-            .withIdentity("trigger-" + deadlineType + "-" + battle.getBattleId(), "battles")
+            .withIdentity("trigger-" + deadlineType + "-" + battleId, "battles")
             .startAt(startDate)
             .build();
 
         try {
+            
             scheduler.scheduleJob(jobDetail, trigger);
-            System.out.println("ENTRATO IN SCHEDULEDEADLINEJOB");
         } catch (SchedulerException e) {
             // Gestisci l'eccezione
         }
@@ -95,15 +130,16 @@ public class BattleService {
     public Optional<Project> getProject(Integer projectId){
         return projectRepository.findById(projectId);
     }
+
+
      public boolean verifyBattleActive(Integer tournamentId) {
         List<Battle> battles = battleRepository.findByTournamentId(tournamentId);
         LocalDateTime currentDateTime = LocalDateTime.now();
         
         for (Battle battle : battles) {
             LocalDateTime submissionDeadline = battle.getSubmissionDeadline();
-
-            if (submissionDeadline != null && submissionDeadline.isAfter(currentDateTime)) {
-            } else {
+            LocalDateTime registrationDeadline = battle.getRegistrationDeadline();
+            if (submissionDeadline != null && registrationDeadline != null && submissionDeadline.isAfter(currentDateTime) && registrationDeadline.isBefore(currentDateTime)) {
                 return false;
             }
         }
@@ -121,12 +157,13 @@ public class BattleService {
                                .collect(Collectors.toList());
     }
 
-
     public List<Battle> getBattlesForEducator(List<Integer> tournamentIDs){
         return battleRepository.findBattlesByTournamentIds(tournamentIDs);
     }
 
 
+
+  
     public List<Battle> getBattlesByTournament(Integer tournamentId) {
         return battleRepository.findByTournamentId(tournamentId);
 
@@ -151,6 +188,12 @@ public class BattleService {
     
         return false; // Lo studente non è registrato per questa battaglia
     }
-    
+
+
+
+    public byte[] getCodeKataTeamByProjectId(Integer projectId) {
+        Optional<Project> project = projectRepository.findById(projectId);
+        return project.map(Project::getCodeKataTeam).orElse(null);
+    }
 
 }

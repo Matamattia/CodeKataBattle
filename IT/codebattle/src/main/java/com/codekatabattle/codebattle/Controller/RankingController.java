@@ -29,6 +29,7 @@ public class RankingController {
 
     @GetMapping("/battles")
     public ResponseEntity<List<BattleRanking>> getBattleRanking(@RequestParam int battleId, @RequestParam int tournamentId) {
+        rankingService.calculateBattleRanking(battleId, tournamentId);
         List<BattleRanking> battleRanking = rankingService.getBattleRanking(battleId, tournamentId);
         return ResponseEntity.ok(battleRanking);
     }

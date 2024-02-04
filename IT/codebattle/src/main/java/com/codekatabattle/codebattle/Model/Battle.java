@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "Battle")
 @IdClass(Battle.BattleId.class)
@@ -15,6 +18,7 @@ public class Battle {
     @Id
     @ManyToOne
     @JoinColumn(name = "tournamentid", referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Tournament tournament;
 
     @Column(name = "linkrepository", columnDefinition = "TEXT")

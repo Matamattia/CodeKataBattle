@@ -39,5 +39,4 @@ public class TeamDTO {
     public void setTournamentId(Integer tournamentId) {
         this.tournamentId = tournamentId;
     }
-    
 }

@@ -9,9 +9,9 @@ public interface TeamRepository extends JpaRepository<Team, Integer>{
     List<Team> findByBattle_BattleIdAndBattle_Tournament_Id(Integer battleId, Integer tournamentId);
 
     Team findByName(String name);
-
     Team findByCodiceInvito(String codiceInvito);
-
+    
+    //List<Team> findByBattle_BattleIdAndBattle_TournamentId(Integer battleId, Integer tournamentId);
 
 
     

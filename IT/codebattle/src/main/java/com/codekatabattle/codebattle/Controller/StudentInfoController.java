@@ -48,8 +48,6 @@ public class StudentInfoController {
 
         return ResponseEntity.ok(response);
     }
-
-
     @GetMapping("/all")
     public ResponseEntity<List<Student>> getAllStudents() {
         List<Student> students = studentService.getAllStudents();

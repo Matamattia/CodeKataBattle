@@ -18,8 +18,4 @@ List<AuthorizedEducator> findByEducatorEmail(String email);
 
     List<AuthorizedEducator> findByEducator(Educator educator);
 
-
-
-
-
 }

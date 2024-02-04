@@ -1,5 +1,6 @@
 package com.codekatabattle.codebattle.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,5 +15,8 @@ public class EducatorService {
 
     public Optional<Educator> getEducatorByEmail(String email) {
         return educatorRepository.findById(email);
+    }
+    public  List<Educator> getAllEducators(){
+        return educatorRepository.findAll();
     }
 }

@@ -20,9 +20,7 @@ public interface TeamParticipantRepository extends JpaRepository<TeamParticipant
 
     List<TeamParticipant> findByStudentEmail(String email);
 
-
     boolean existsByTeam_BattleAndStudent(Battle battle, Student student);
-
-
+    boolean existsByTeam_TeamIdAndStudent_Email(Integer teamId, String studentEmail);
 
 }

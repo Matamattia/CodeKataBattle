@@ -3,6 +3,9 @@ package com.codekatabattle.codebattle.Model;
 import jakarta.persistence.*;
 import java.io.Serializable;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
 @Table(name = "AuthorizedEducators")
 @IdClass(AuthorizedEducator.AuthorizedEducatorsId.class)
@@ -11,11 +14,13 @@ public class AuthorizedEducator {
     @Id
     @ManyToOne
     @JoinColumn(name = "tournamentid", referencedColumnName = "id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Tournament tournament;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "authorizededucator", referencedColumnName = "email")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Educator educator;
 
     public static class AuthorizedEducatorsId implements Serializable {

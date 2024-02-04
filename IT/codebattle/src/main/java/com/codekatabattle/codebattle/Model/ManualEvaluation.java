@@ -1,6 +1,9 @@
 
 package com.codekatabattle.codebattle.Model;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import jakarta.persistence.*;
 
 @Entity
@@ -13,6 +16,7 @@ public class ManualEvaluation {
 
     @OneToOne
     @JoinColumn(name = "automatedevaluationid", referencedColumnName = "projectid")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private AutomatedEvaluation automatedEvaluation;
 
     @ManyToOne

@@ -24,7 +24,7 @@ import com.codekatabattle.codebattle.Repository.StudentRepository;
 
 
 import java.util.List;
-
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -114,10 +114,11 @@ public void calculateBattleRanking(int battleId, int tournamentId) {
         float totalScore = automatedEvaluation.getTotalScore();
 
         // Controlla se esiste una valutazione manuale
-        ManualEvaluation manualEvaluation = manualEvaluationRepository.findByAutomatedEvaluationId(automatedEvaluation.getId());
-        if (manualEvaluation != null) {
-            totalScore += manualEvaluation.getPersonalScore();
-        }
+        Optional<ManualEvaluation> manualEvaluationOpt = manualEvaluationRepository.findByAutomatedEvaluationId(automatedEvaluation.getId());
+if (manualEvaluationOpt.isPresent()) {
+    ManualEvaluation manualEvaluation = manualEvaluationOpt.get();
+    totalScore += manualEvaluation.getPersonalScore();
+}
 
 
         
