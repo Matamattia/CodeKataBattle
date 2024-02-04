@@ -42,7 +42,7 @@ public class TournamentController {
     @Autowired
     private BattleService battleService;
 
-//checked V
+
     @GetMapping("/myTournament")
     public ResponseEntity<Optional<Tournament>> getTournament(@RequestParam Integer id) {
         Optional<Tournament> tournament = tournamentService.tournamentInfo(id);
@@ -56,7 +56,7 @@ public class TournamentController {
             return ResponseEntity.ok(isOpen);
         
     }
-//checked V
+
     @GetMapping("/all")
     public ResponseEntity<List<Tournament>> getAllTournaments() {
         List<Tournament> tournaments = tournamentService.tournaments();
@@ -64,7 +64,7 @@ public class TournamentController {
     }
    
 
-    //checked V
+
     @PostMapping("/create")
     public ResponseEntity<Tournament> createTournament(@RequestBody TournamenteCreateDTO tournamentCreateDTO) {
         Tournament tournament = tournamentCreateDTO.getTournament();
@@ -97,23 +97,24 @@ public class TournamentController {
         
         return ResponseEntity.ok(insertedTournament);
     }
+
     
 
-    //checked V
+
     @PostMapping("/authorized")
     public ResponseEntity<List<AuthorizedEducator>> createTournament(@RequestBody List<AuthorizedEducator> educators) {
         List<AuthorizedEducator> createdTournament = tournamentService.insertAuthorized(educators);
         return ResponseEntity.ok(createdTournament);
     }
 
-    //checked V
+
     @GetMapping("/educator")
     public ResponseEntity<List<Tournament>> getEducatorTournaments(@RequestParam String educatorEmail) {
         List<Tournament> tournaments = tournamentService.myTournamentsEducator(educatorEmail);
         return ResponseEntity.ok(tournaments);
     }
     
-//checked V
+
    @GetMapping("/student")
 public ResponseEntity<List<Tournament>> getStudentTournaments(@RequestParam String studentEmail) {
     System.out.println(studentEmail);
@@ -129,7 +130,7 @@ public ResponseEntity<Boolean> getRegistrationStatus(@RequestParam Integer id) {
 
 
     
-//checked V
+
 @PostMapping("/join")
 public ResponseEntity<StudentTournament> joinTournament(@RequestParam Integer tournamentId, @RequestParam String studentEmail) {
     // Crea un nuovo oggetto StudentTournament
@@ -162,7 +163,7 @@ public ResponseEntity<Boolean> isAuthorized(@RequestParam String educatorEmail, 
 
 
 
-    //checked V, vi è il problema di cascade per i vincoli
+   
     @PostMapping("/delete")
     public ResponseEntity<Void> deleteTournament(@RequestParam Integer id, @RequestBody EducatorEmailDTO educatorEmail) {
         Tournament tournament = tournamentService.tournamentInfo(id).orElse(null);
@@ -175,30 +176,6 @@ public ResponseEntity<Boolean> isAuthorized(@RequestParam String educatorEmail, 
     }
 
 
-//     @PostMapping("/delete")
-//     public ResponseEntity<Boolean> deleteTournament(@RequestParam Integer id, @RequestBody EducatorEmailDTO educatorEmail) {
-//     // Verifica prima se tutte le battaglie relative al torneo non sono attive
-//         boolean battlesNotActive = battleService.verifyBattleActive(id);
-//         System.out.println(battlesNotActive);
-//     // Se ci sono battaglie attive, ritorna false
-//         if (battlesNotActive == false) {
-//             return ResponseEntity.ok(false);
-//         } else {
-//         // Altrimenti, procedi con la cancellazione del torneo
-//             Tournament tournament = tournamentService.tournamentInfo(id).orElse(null);
-            
-//             if (tournament != null) {
-//             tournamentService.deleteTournament(tournament, educatorEmail.getEducatorEmail());
-//             // Ritorna true per indicare che il torneo è stato eliminato con successo
-//             return ResponseEntity.ok(true);
-//             } else {
-//             // Se il torneo non esiste, ritorna false
-//             return ResponseEntity.ok(false);
-//         }
-//     }
-// }
-
-    //checked V
     @PostMapping("/close")
     public ResponseEntity<Boolean> closeTournament(@RequestParam Integer tournamentId, @RequestBody EducatorEmailDTO educatorEmail) {
         boolean notActive = battleService.verifyBattleActive(tournamentId);
