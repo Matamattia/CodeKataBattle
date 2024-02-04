@@ -1,0 +1,115 @@
+/* Registration.css */
+
+.registration-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(13, 17, 22); /* Sfondo grigio chiaro */
+}
+
+.registration-form {
+  background-color: rgba(22, 27, 34, 1); /* Colore del form */
+  width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Ombra leggera */
+  text-align: center;
+  color: rgb(147, 219, 217); /* Colore del testo */
+}
+
+.registration-form h2 {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.registration-form input {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: none;
+  border-bottom: 2px solid rgb(147, 219, 217);
+  background-color: transparent;
+  font-size: 18px;
+  width: 100%;
+  color: rgb(147, 219, 217);
+  transition: border-color 0.3s ease;
+}
+
+.registration-form input:focus {
+  outline: none;
+  border-color: #007bff; /* Colore del bordo al focus */
+}
+
+.user-type {
+  color: rgb(147, 219, 217); /* Colore del testo sottostante */
+  font-size: 16px;
+  margin-bottom: 10px; /* Incrementato il margine inferiore per separare le scelte */
+}
+
+.user-type label {
+  display: block;
+  margin-bottom: 20px;
+  margin-top: 29px;
+}
+
+.user-type select {
+  padding: 10px;
+  border: 2px solid rgb(147, 219, 217);
+  border-radius: 5px;
+  width: 100%;
+  font-size: 18px;
+  color: rgb(147, 219, 217);
+  background-color: transparent;
+}
+
+.user-type select:focus {
+  outline: none;
+  border-color: #007bff; /* Colore del bordo al focus */
+}
+
+.submit-button {
+  padding: 15px;
+  background-color: rgb(147, 219, 217); /* Colore del pulsante di registrazione */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #748290; /* Colore del pulsante al passaggio del mouse */
+}
+
+.error-message,
+.success-message {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.error-message {
+  color: #ff0000; /* Colore del messaggio di errore */
+}
+
+.success-message {
+  color: #00ff00; /* Colore del messaggio di successo */
+}
+
+.login-text {
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.login-text a {
+  color: rgb(147, 219, 217); /* Colore dei link */
+  text-decoration: none;
+  font-weight: bold;
+  display: block; /* Rendi i link blocchi separati */
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}

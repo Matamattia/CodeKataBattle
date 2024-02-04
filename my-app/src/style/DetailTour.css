@@ -1,0 +1,187 @@
+/* Stili globali */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Stile per la card delle battaglie al passaggio del mouse */
+.battle-card:hover {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Stili per la pagina dei dettagli del torneo */
+.tournament-details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: #FFF;
+    background-color: #121212;
+    min-height: 100vh;
+    padding-top: 100px;
+    margin-top: 30px;
+}
+
+.tournament-header {
+    text-align: center;
+}
+
+.tournament-title {
+    font-size: 2.5rem;
+}
+
+.tournament-description {
+    margin: 1rem 0;
+}
+
+/* Stili per il pulsante "Iscriviti al Torneo" */
+.join-button {
+    background-color: #0e5c5c;
+    color: #FFF;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    margin-bottom: 2rem;
+}
+
+.join-button:hover {
+    background-color: #137a75;
+}
+
+/* Stili per il contenuto del torneo */
+.tournament-content {
+    width: 100%;
+    max-width: 1200px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column; /* Modificato per disporre gli elementi in colonna */
+    align-items: center; /* Allineamento centrale */
+}
+
+/* Stili per la sezione della classifica */
+.ranking-section {
+    width: 100%; /* Larghezza completa */
+    margin-top: 20px;
+}
+
+/* Stili per la tabella della classifica */
+.ranking-table {
+    width: 100%;
+    margin-top: 20px;
+    border-radius: 20px;
+}
+
+.ranking-table thead {
+    background-color: #137a75;
+    color: #FFF;
+}
+
+.ranking-table th,
+.ranking-table td {
+    padding: 8px;
+    text-align: left;
+}
+
+/* Stili per la sezione delle battaglie */
+.battles-section {
+    width: 100%; /* Larghezza completa */
+    margin-top: 20px;
+    
+}
+
+/* Stili per la card delle battaglie */
+.battle-card {
+    background-color: #1F1F1F;
+    border-radius: 10px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    margin-top: 20px;
+}
+
+.battle-card h3 {
+    background-color: #137a75;
+    color: #FFF;
+    padding: 0.5rem;
+    margin: -1rem -1rem 1rem -1rem;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Stili per il pulsante "Mostra Classifica" */
+.ranking-button {
+    background-color: transparent;
+    border: 1px solid rgb(172,227,224); /* White border */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color:rgb(172,227,224);
+}
+
+.ranking-button a, .ranking-button a:visited {
+    background-color: transparent;
+    border: 1px solid rgb(172,227,224); /* White border */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.ranking-button a:hover {
+    background-color: rgb(172,227,224); /* Background color on hover */
+    color: #1e90ff; /* Text color on hover */
+}
+.ranking-button:hover {
+    background-color: #137a75;
+}
+/* Stili per il pulsante "Create Battle" */
+.create-battle-button {
+    background-color: rgb(172,227,224); /* Verde */
+    color: white;
+    padding: 10px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.create-battle-button:hover {
+    background-color: #45a049;
+}
+
+/* Stili per il pulsante "Delete Tournament" */
+.delete-tournament-button {
+    background-color: rgb(172,227,224); /* Rosso */
+    color: white;
+    padding: 10px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.delete-tournament-button:hover {
+    background-color: #da190b;
+}
+
+/* Stili per il pulsante "Close Tournament" */
+.close-tournament-button {
+    background-color: rgb(172,227,224); /* Blu */
+    color: white;
+    padding: 10px 24px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.close-tournament-button:hover {
+    background-color: #005f86;
+}

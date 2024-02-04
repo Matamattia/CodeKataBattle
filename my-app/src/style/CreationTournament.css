@@ -1,0 +1,111 @@
+/* Contenitore del form */
+.tournament-form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+/* Header */
+.header-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Elevato z-index per assicurarsi che sia in cima */
+    background-color: #121212; /* Corrisponde al colore di sfondo dell'header */
+}
+
+/* Form principale */
+.tournament-form {
+    background: linear-gradient(to bottom, #121212, #68c0c4); /* Sfondo con gradiente dal colore scuro al colore del pulsante */
+    padding: 20px;
+    border-radius: 10px; /* Aumenta il raggio per angoli più arrotondati */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 400px;
+    width: 100%;
+    margin-top: 60px; /* Leggermente aumentato il margine superiore per un migliore spazio */
+}
+
+/* Titolo del form */
+.tournament-form h2 {
+    text-align: center;
+    color: #68c0c4; /* Cambiato il colore del testo del titolo per farlo corrispondere al colore del pulsante */
+    margin-bottom: 20px;
+}
+
+/* Input, selezioni e textarea */
+.tournament-form input,
+.tournament-form select {
+    width: 100%;
+    padding: 12px; /* Leggermente aumentato il padding per una maggiore altezza del campo */
+    margin-bottom: 20px; /* Aumentato il margine inferiore per una migliore separazione tra i campi */
+    border: 1px solid #68c0c4; /* Cambiato il colore del bordo per farlo corrispondere al colore del pulsante */
+    border-radius: 6px; /* Angoli più arrotondati */
+    box-sizing: border-box;
+    font-size: 16px; /* Leggermente aumentata la dimensione del testo */
+    background-color: #f9f9f9; /* Cambiato il colore di sfondo dei campi a grigio chiaro */
+    color: #68c0c4; /* Cambiato il colore del testo dei campi per farlo corrispondere al colore del pulsante */
+}
+
+/* Textarea */
+.tournament-form textarea {
+    width: 100%;
+    padding: 12px; /* Leggermente aumentato il padding per una maggiore altezza del campo */
+    margin-bottom: 20px; /* Aumentato il margine inferiore per una migliore separazione tra i campi */
+    border: 1px solid #68c0c4; /* Cambiato il colore del bordo per farlo corrispondere al colore del pulsante */
+    border-radius: 6px; /* Angoli più arrotondati */
+    box-sizing: border-box;
+    font-size: 16px; /* Leggermente aumentata la dimensione del testo */
+    background-color: #f9f9f9; /* Cambiato il colore di sfondo dei campi a grigio chiaro */
+    color: #68c0c4; /* Cambiato il colore del testo dei campi per farlo corrispondere al colore del pulsante */
+}
+
+/* Pulsante "Crea Torneo" */
+.tournament-form button.submit-button {
+    width: 80%; /* Ridotto leggermente la larghezza */
+    padding: 10px 20px; /* Leggermente ridotto il padding per rendere il pulsante più piccolo */
+    background-color: #68c0c4; /* Cambiato il colore di sfondo a uno più chiaro */
+    color: white;
+    border: none;
+    border-radius: 6px; /* Angoli più arrotondati */
+    cursor: pointer;
+    margin-top: 20px; /* Aumentato il margine superiore per una migliore spaziatura dal campo sottostante */
+}
+
+/* Stile del pulsante al passaggio del mouse */
+.tournament-form button.submit-button:hover {
+    background-color: #50a3a7; /* Cambiato il colore al passaggio del mouse a uno leggermente più scuro */
+}
+
+/* Messaggio di errore */
+.error-message {
+    color: red;
+    text-align: center;
+    margin-top: 20px; /* Aumentato il margine superiore per una migliore spaziatura dal pulsante */
+}
+
+/* Bottoni "Add Educator" e "Delete" */
+.tournament-form button.add-educator-button,
+.tournament-form button.delete-button {
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo bianco */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: white; /* Colore del testo */
+    margin-top: 10px;
+}
+
+/* Aggiunto uno stile specifico al pulsante "Delete" */
+.tournament-form button.delete-button {
+    margin-left: 10px; /* Margine sinistro per separare dall'email */
+}
+
+/* Stile delle etichette */
+.tournament-form label {
+    width: 900px; /* Imposta una larghezza fissa per le etichette */
+    display: inline-block; /* Permette loro di occupare spazio orizzontale */
+    text-align: left; /* Allinea il testo a sinistra */
+    margin-right: 10px; /* Aggiunge un margine destro per separazione dal campo di input */
+}

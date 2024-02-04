@@ -1,0 +1,69 @@
+.welcomePage {
+    font-family: 'Arial', sans-serif;
+    background-color: #121212;
+    min-height: 100vh;
+}
+
+.heroSection {
+    background: url('background.png') no-repeat center center;
+    background-size: cover;
+    text-align: center;
+    padding: 50px 0;
+}
+
+.mainContent {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #1F1F1F;;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.mainContent h2 {
+    color: rgb(147, 219, 217);;
+    font-size: 2.5em;
+    animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+.dashboardSection {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+   
+}
+
+.dashboardCard {
+    background-color: #1F1F1F;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    width: 45%;
+    margin-bottom: 150px;
+    
+}
+
+.dashboardCard h3 {
+    margin-bottom: 10px;
+  
+}
+
+.dashboardCard ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.dashboardCard li {
+    margin-bottom: 5px;
+}
+
+.mainContent p{
+    margin-bottom: 30px;
+    margin-top: 30px;
+}

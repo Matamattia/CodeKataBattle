@@ -1,0 +1,223 @@
+
+.battle-details {
+
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: #121212; /* Colore sfondo scuro */
+    color: #CCC; /* Colore del testo predefinito */
+    margin-top: 80px;
+}
+
+/* Stile dell'intestazione */
+.battle-info h1 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFF; /* Testo bianco */
+}
+
+.battle-info p {
+    font-size: 16px;
+    color: #CCC; /* Testo grigio chiaro */
+    margin-bottom: 10px;
+}
+
+/* Stile della sezione di registrazione del team */
+.team-registration-section h2 {
+    font-size: 20px;
+    font-weight: bold;
+    color: #FFF; /* Testo bianco */
+    margin-top: 20px;
+}
+
+/* Stile del pulsante "Crea Team" */
+.team-registration-section button {
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo bianco */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo */
+}
+
+.team-registration-section button:hover {
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: black; /* Cambia il colore del testo al passaggio del mouse */
+}
+
+/* Stile del modulo di creazione del team */
+.team-creation-form {
+    background-color: #1F1F1F; /* Colore sfondo leggermente più chiaro per il modulo */
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+.team-creation-form h3 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #FFF; /* Testo bianco */
+    margin-bottom: 10px;
+}
+
+.team-creation-form label {
+    display: block;
+    font-size: 16px;
+    color: #CCC; /* Testo grigio chiaro */
+    margin-top: 10px;
+}
+
+/* Stile del campo di input */
+.team-creation-form input[type="text"],
+.team-creation-form select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #333; /* Cambia il colore del bordo per migliorare il contrasto */
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 5px;
+    background-color: #1F1F1F; /* Colore sfondo leggermente più chiaro per il campo di input */
+    color: #FFF; /* Testo bianco */
+}
+
+/* Stile del pulsante "Aggiungi Studente" */
+.team-creation-form button.add-student-button {
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo bianco */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo */
+    margin-top: 10px;
+}
+.close-button{
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo bianco */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo */
+    margin-top: 10px;
+}
+.close-button:hover{
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: black; 
+}
+.final-submission-button{
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo bianco */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo */
+    margin-top: 10px;
+}
+.final-submission-button:hover{
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: black;
+}
+.delete-battle-button{
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo bianco */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo */
+    margin-top: 10px;
+}
+.delete-battle-button:hover{
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: black; 
+}
+.team-creation-form button.add-student-button:hover {
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: black; /* Cambia il colore del testo al passaggio del mouse */
+}
+/* Stili per la lista degli studenti nel team */
+.team-creation-form h4 {
+    font-size: 16px;
+    color: #FFF; /* Testo bianco */
+    margin-top: 15px;
+}
+
+.team-creation-form ul {
+    list-style: none;
+    padding: 0;
+}
+
+.team-creation-form li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/* Stili per il pulsante "Rimuovi" nella lista degli studenti */
+/* Stile del pulsante "Rimuovi" nella lista degli studenti */
+.team-creation-form button.remove-student-button {
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo rosso */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo rosso */
+}
+
+.team-creation-form button.remove-student-button:hover {
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: white; /* Cambia il colore del testo al passaggio del mouse */
+}
+
+
+/* Stile del pulsante "Crea Team" */
+.team-creation-form button.create-team-button {
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo bianco */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo */
+}
+
+.team-creation-form button.create-team-button:hover {
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: black; /* Cambia il colore del testo al passaggio del mouse */
+}
+
+/* Stile del messaggio di team creato */
+.team-created-message {
+    background-color: #4CAF50;
+    color: #FFF;
+    font-size: 18px;
+    text-align: center;
+    padding: 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+/* Aggiungi margine inferiore a vari elementi per separarli */
+.battle-info h1,
+.battle-info p,
+.team-registration-section h2,
+.team-creation-form h3,
+.team-creation-form label,
+.team-creation-form button,
+.team-creation-form h4 {
+    margin-bottom: 10px;
+}
+
+.team-creation-form li {
+    margin-bottom: 15px; /* Aumenta il margine tra gli elementi della lista */
+}
+
+.battle-ranking table {
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.battle-ranking th, .battle-ranking td {
+    border: 1px solid #DDD;
+    padding: 10px;
+    text-align: left;
+}

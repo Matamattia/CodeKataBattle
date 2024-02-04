@@ -1,0 +1,103 @@
+.tournaments {
+    padding-top: 20px;
+    background-color: #121212; /* Colore di sfondo scuro per l'intera pagina */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header-container {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; /* Z-index elevato per assicurarsi che sia in primo piano */
+    background-color: #121212; /* Abbinamento del colore di sfondo dell'intestazione */
+}
+
+.tournaments-container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+.tournaments-container h1 {
+    text-align: center;
+    color: #FFF; /* Colore del testo chiaro per sfondo scuro */
+    margin-bottom: 2rem; /* Regola lo spazio sotto il titolo */
+    margin-top: 2rem;
+}
+
+.tournament-card p, .h1 {
+    color: #CCC; /* Testo grigio chiaro per una migliore leggibilità */
+}
+
+.tournament-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+}
+
+.tournament-card {
+    background-color: #1F1F1F; /* Leggermente più chiaro rispetto allo sfondo della pagina per il contrasto */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Ombra più grande per un effetto 'fluttuante' */
+    padding: 20px;
+    margin-bottom: 2rem; /* Spazio tra le carte */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tournament-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.7); /* Ombra migliorata al passaggio del mouse per maggiore profondità */
+}
+
+.tournament-info {
+    flex-grow: 1;
+}
+
+.tournament-card h2 {
+    color: rgb(147, 219, 217); /* Colore azzurro chiaro per il titolo */
+}
+
+.tournament-deadline {
+    color: #FFD700; /* Colore dorato per la data di scadenza */
+    font-weight: bold; /* Testo in grassetto per farlo risaltare */
+    margin-top: 1rem; /* Spazio aggiuntivo sopra */
+}
+
+.tournament-deadline.near-deadline {
+    color: #FF4500; /* Colore rosso per sottolineare l'urgenza */
+}
+
+/* Stili globali aggiuntivi per un miglior tema scuro */
+body {
+    background-color: #121212; /* Assicura che il corpo abbia lo stesso colore di sfondo */
+    color: #CCC; /* Colore predefinito del testo per l'intera pagina */
+}
+
+
+.create-tournament-button {
+    background-color: rgb(147, 219, 217); /* Colore di sfondo verde per il pulsante */
+    color: white; /* Testo bianco per il contrasto */
+    border: none; /* Nessun bordo */
+    border-radius: 5px; /* Angoli arrotondati */
+    padding: 10px 20px; /* Imbottitura per un aspetto più grande */
+    font-size: 1rem; /* Dimensione del testo */
+    cursor: pointer; /* Cambia il cursore per indicare che è cliccabile */
+    transition: background-color 0.3s ease; /* Transizione per l'effetto al passaggio del mouse */
+    margin-bottom: 20px; /* Spazio sotto il pulsante */
+    align-self: center; /* Centra il pulsante nell'elemento genitore */
+}
+
+.create-tournament-button:hover {
+    background-color: rgb(147, 219, 217); /* Cambia colore al passaggio del mouse */
+}
+
+.create-tournament-button:focus {
+    outline: none; /* Rimuove l'outline quando è in focus */
+    box-shadow: 0 0 0 2px rgb(147, 219, 217); /* Aggiunge un effetto di ombra per il focus */
+}

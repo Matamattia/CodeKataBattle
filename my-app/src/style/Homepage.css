@@ -1,0 +1,162 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, html {
+  height: 100%;
+  font-family: 'Arial', sans-serif;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+
+/* Overlay per migliorare la leggibilità del testo */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5); /* Modifica l'opacità secondo necessità */
+  z-index: 1;
+}
+
+/* Stili della homepage */
+.homepage {
+  background-image: url('background.png'); /* Aggiorna con il percorso corretto del file background.png */
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  position: relative;
+  color: white;
+  height: 100vh;
+  
+}
+
+.header {
+  background-color: #000; /* Header nero */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 2;
+}
+
+.logo {
+  margin-right: auto; /* Spinge tutto il resto verso destra */
+}
+
+.navbar {
+  display: flex;
+  justify-content: center;
+  list-style-type: none; /* Rimuove i pallini dai link se sono in un elenco non ordinato */
+}
+
+.nav-link {
+  color: rgb(172,227,224);;
+  text-decoration: none;
+  margin: 0 1rem; /* Spazio tra i link */
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #1e90ff; /* Colore al passaggio del mouse */
+}
+
+.access-button {
+  background-color: transparent;
+  color: rgb(172,227,224);
+  border: 1px solid rgb(172,227,224); /* Bordo bianco */
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.access-button:hover {
+  background-color: white; /* Sfondo bianco al passaggio del mouse */
+  color: black; /* Testo nero al passaggio del mouse */
+}
+
+/* Contenuti principali */
+.content {
+  display: grid;
+grid-template-columns: repeat(3, 1fr); /* Crea tre colonne di larghezza uguale */
+gap: 20px; /* Imposta uno spazio tra i box */
+justify-items: center; /* Allinea i box orizzontalmente al centro
+  
+  flex-direction: column;
+ /* justify-content: center;*/
+  align-items: center;
+  height: 100vh; /* Assicurati che l'intera viewport sia occupata */
+  text-align: center;
+  position: relative;
+  z-index: 2;
+  padding-top: 60px; /* Assicurati che il contenuto non sia nascosto dall'header */
+}
+
+.main {
+  flex: 1; /* This will make the main content fill the space between header and footer */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.main-button {
+  background-color: rgb(172,227,224); /* Colore del bottone */
+  color: white;
+  border: none; /* Nessun bordo */
+  padding: 15px 30px; /* Più spazio intorno al testo */
+  font-size: 1.2rem; /* Dimensione del font più grande */
+  font-weight: bold; /* Testo in grassetto */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  border-radius: 25px; /* Bordi arrotondati */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Ombra per dare profondità */
+}
+
+.main-button:hover {
+background-color: rgba(0, 0, 0, 0.653); /* Colore al passaggio del mouse */
+transform: translateY(-2px); /* Effetto di sollevamento leggero */
+box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* Ombra più pronunciata al passaggio del mouse */
+}
+
+.circular-text-box {
+background-color: rgba(0, 0, 0, 0.5); /* Sfondo semi-trasparente nero per migliorare la leggibilità */
+color: white; /* Colore del testo bianco per contrastare con lo sfondo scuro */
+border-radius: 20px; /* Bordi meno arrotondati */
+padding: 20px;
+margin: 20px;
+width: calc(100% - 40px); /* Calcolo della larghezza per includere il padding */
+max-width: 350px; /* Larghezza massima per evitare che diventi troppo largo */
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombra leggera per distinzione */
+text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Ombra del testo per migliorare la leggibilità */
+}
+.circular-text-box h1 {
+font-size: 1.8rem; /* Dimensione del titolo */
+margin-bottom: 15px; /* Spazio sotto il titolo */
+}
+.circular-text-box p {
+font-size: 1rem; /* Dimensione del paragrafo */
+margin-bottom: 20px; /* Spazio sotto il paragrafo */
+}
+.circular-text-box + .circular-text-box {
+  margin-left: 2%; /* Imposta uno spazio tra i box */
+}
+
+/* Fine dei stili della homepage */
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,57 @@
+.headerStudent {
+    background-color: #000;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    position: sticky; /* Stick to the top when scrolling */
+    top: 0; /* Distance from the top of the viewport */
+    width: 100%;
+    z-index: 10; /* Ensure it's above other content */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5); /* Subtle shadow for depth */
+}
+
+.headerStudent h1, .headerStudent nav ul li a {
+    color: rgb(172,227,224); /* Use the same color for text for consistency */
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.headerStudent h1 {
+    margin-right: auto; /* Push other elements to the right */
+    font-size: 1.8em; /* Larger font for branding */
+}
+
+.headerStudent nav ul {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.headerStudent nav ul li {
+    margin: 0 1rem; /* Space between nav items */
+}
+
+.headerStudent nav ul li a:hover {
+    color: #1e90ff; /* Color on hover to match the main header style */
+}
+
+/* Style for the logout button to match the access-button style */
+.logout a, .logout a:visited {
+    background-color: transparent;
+    border: 1px solid rgb(172,227,224); /* White border */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.logout a:hover {
+    background-color: rgb(172,227,224); /* Background color on hover */
+    color: black; /* Text color on hover */
+}
+
+
+
+

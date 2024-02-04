@@ -1,0 +1,93 @@
+.tournaments {
+    padding-top: 20px;
+    background-color: #121212; /* Dark background for the whole page */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+   
+    
+}
+.header-container {
+    position:absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 100; /* High z-index to ensure it's on top */
+    background-color: #121212; /* Match the header background color */
+}
+
+.tournaments-container {
+    margin-top: 50px;
+    margin-bottom: 30px;
+    width: 90%;
+    max-width: 1200px;
+
+    
+}
+
+.tournaments-container h1 {
+    text-align: center;
+    color: #FFF; /* Light text color for dark background */
+    margin-bottom: 2rem; /* Adjust the space below the title */
+    margin-top:2rem ;
+}
+.h1, .tournament-card p {
+    color: #CCC; /* Light gray text for readability */
+    
+   
+}
+
+.tournament-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 100%;
+   
+}
+
+.tournament-card {
+    background-color: #1F1F1F; /* Slightly lighter than the page background for contrast */
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5); /* Larger shadow for a 'floating' effect */
+    padding: 20px;
+    margin-bottom: 2rem; /* Space between cards */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.tournament-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 45px rgba(0,0,0,0.7); /* Enhanced shadow on hover for more depth */
+}
+
+.tournament-info {
+    flex-grow: 1;
+}
+
+.tournament-card h2 {
+    color: rgb(147, 219, 217);; /* Light blue color for the title */
+}
+
+
+
+
+/* Additional global styles for better dark theme */
+body {
+    background-color: #121212; /* Ensure the body has the same background color */
+    color: #CCC; /* Default text color for the whole page */
+}
+
+input, button, a {
+    /* Adjust your form elements and buttons to match the dark theme */
+}
+
+.tournament-deadline {
+    color: #FFD700; /* Colore dorato per la deadline */
+    font-weight: bold; /* Testo in grassetto per farlo risaltare */
+    margin-top: 1rem; /* Spazio aggiuntivo sopra */
+}
+
+/* Aggiungiamo uno stile per quando la data è vicina o passata */
+.tournament-deadline.near-deadline {
+    color: #FF4500; /* Colore rosso per sottolineare l'urgenza */
+}

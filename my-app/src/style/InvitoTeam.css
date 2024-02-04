@@ -1,0 +1,55 @@
+/* Stile globale per la pagina InvitoTeam */
+.invito-team-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: Arial, sans-serif;
+    background-color: 121212; /* Colore sfondo scuro */
+    color: #CCC; /* Colore del testo predefinito */
+    margin-top: 80px;
+    border-radius: 5px;
+}
+
+/* Stile dell'intestazione nella pagina InvitoTeam */
+.invito-team-header h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #FFF; /* Testo bianco */
+    margin-bottom: 10px;
+}
+
+.invito-team-content p {
+    font-size: 16px;
+    color: #CCC; /* Testo grigio chiaro */
+    margin-bottom: 10px;
+}
+
+/* Stile dei pulsanti nella pagina InvitoTeam */
+.invito-team-buttons button {
+    background-color: transparent;
+    border: 1px solid rgb(172, 227, 224); /* Bordo colorato */
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    color: rgb(172, 227, 224); /* Colore del testo */
+    margin-right: 10px;
+}
+
+.invito-team-buttons button:hover {
+    background-color: rgb(172, 227, 224); /* Cambia il colore di sfondo al passaggio del mouse */
+    color: black; /* Cambia il colore del testo al passaggio del mouse */
+}
+
+/* Stile del messaggio di errore */
+.invito-team-error {
+    color: #E57373; /* Colore del testo per l'errore */
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+/* Aggiunta di un margine inferiore per separare gli elementi */
+.invito-team-header h2,
+.invito-team-content p,
+.invito-team-buttons button {
+    margin-bottom: 15px;
+}

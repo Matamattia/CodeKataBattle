@@ -1,0 +1,118 @@
+/* Login.css */
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: rgb(13, 17, 22); /* Sfondo grigio chiaro */
+}
+
+.login-form {
+  background-color: rgba(22, 27, 34, 1); /* Colore del form */
+  width: 400px;
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); /* Ombra leggera */
+  text-align: center;
+}
+
+.login-form h2 {
+  color: rgb(147, 219, 217); /* Colore del titolo */
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.login-form input {
+  margin-bottom: 20px;
+  padding: 15px;
+  border: none;
+  border-bottom: 2px solid rgb(147, 219, 217);
+  background-color: transparent;
+  font-size: 18px;
+  width: 100%;
+  color: rgb(147, 219, 217);
+  transition: border-color 0.3s ease;
+}
+
+.login-form input:focus {
+  outline: none;
+  border-color: #007bff; /* Colore del bordo al focus */
+}
+
+.submit-button {
+  padding: 15px;
+  background-color: rgb(147, 219, 217); /* Colore del pulsante di accesso */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 20px;
+  font-weight: bold;
+  width: 100%;
+  transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+  background-color: #748290; /* Colore del pulsante al passaggio del mouse */
+}
+
+.user-type {
+  color: rgb(147, 219, 217); /* Colore del testo sottostante */
+  font-size: 16px;
+  
+}
+
+.user-type label {
+  display: block;
+}
+
+.user-type select {
+  margin-bottom: 20;
+  padding: 10px;
+  border: 2px solid rgb(147, 219, 217);
+  border-radius: 5px;
+  width: 100%;
+  font-size: 18px;
+  color: rgb(147, 219, 217);
+  background-color: transparent;
+}
+
+.forgot-text {
+  color: rgb(147, 219, 217); /* Colore del testo sottostante */
+  font-size: 16px;
+  margin: 10px; /* Incrementato il margine superiore per separare le scritte */
+}
+
+.forgot-text a {
+  color: rgb(147, 219, 217); /* Colore dei link */
+  text-decoration: none;
+  font-weight: bold;
+  display: block; /* Rendi i link blocchi separati */
+}
+
+.login-text {
+  color: rgb(147, 219, 217); /* Colore del testo sottostante */
+  font-size: 16px;
+  margin-top: 20px; /* Incrementato il margine superiore per separare le scritte */
+}
+
+.login-text a {
+  color: rgb(147, 219, 217); /* Colore dei link */
+  text-decoration: none;
+  font-weight: bold;
+  display: block; /* Rendi i link blocchi separati */
+}
+
+.login-text a:hover {
+  text-decoration: underline;
+}
+
+.forgot-text a:hover {
+  text-decoration: underline;
+}
+
+.error-message {
+  color: red;
+  font-size: 14px; /* Imposta il formato del testo a tuo piacimento */
+}
