@@ -35,7 +35,7 @@ const FinalSubmission = () => {
                     projects.map((project) => (
                         <div key={project.projectId} className="project-item">
                             <h3>Id project : {project.projectId}</h3>
-                            <h3>Id project : {project.team.teamId}</h3>
+                            <h3>Team Id : {project.team.teamId}</h3>
                            
                             <Link to={`/projectDetails/${project.projectId}`}>View Details</Link>
                         </div>

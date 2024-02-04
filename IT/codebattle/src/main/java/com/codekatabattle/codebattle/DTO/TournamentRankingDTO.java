@@ -2,9 +2,9 @@ package com.codekatabattle.codebattle.DTO;
 
 public class TournamentRankingDTO {
     private String studentEmail;
-    private Float totalScore;
+    private Double totalScore;
 
-    public TournamentRankingDTO(String studentEmail, Float totalScore) {
+    public TournamentRankingDTO(String studentEmail, Double totalScore) {
         this.studentEmail = studentEmail;
         this.totalScore = totalScore;
     }
@@ -17,11 +17,11 @@ public class TournamentRankingDTO {
         this.studentEmail = studentEmail;
     }
 
-    public Float getTotalScore() {
+    public Double getTotalScore() {
         return totalScore;
     }
 
-    public void setTotalScore(Float totalScore) {
+    public void setTotalScore(Double totalScore) {
         this.totalScore = totalScore;
     }
     

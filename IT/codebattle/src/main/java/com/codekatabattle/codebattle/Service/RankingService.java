@@ -18,7 +18,6 @@ import com.codekatabattle.codebattle.Repository.TournamentRankingRepository;
 import com.codekatabattle.codebattle.Repository.TournamentRepository;
 import com.codekatabattle.codebattle.Repository.BattleRankingRepository;
 import jakarta.persistence.EntityNotFoundException;
-
 import com.codekatabattle.codebattle.Repository.ProjectRepository;
 import com.codekatabattle.codebattle.Repository.StudentRepository;
 
@@ -84,7 +83,7 @@ public void createTournamentRanking(int tournamentId) {
             TournamentRanking tournamentRanking = new TournamentRanking();
             tournamentRanking.setStudent(student);
             tournamentRanking.setTournament(tournament);
-            tournamentRanking.setScore(dto.getTotalScore());
+            tournamentRanking.setScore(dto.getTotalScore().floatValue());
 
             tournamentRankingRepository.save(tournamentRanking);
         }

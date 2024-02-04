@@ -15,14 +15,14 @@
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
-    background-color: #1F1F1F;;
+    background-color: #1F1F1F;
     border-radius: 8px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     text-align: center;
 }
 
 .mainContent h2 {
-    color: rgb(147, 219, 217);;
+    color: rgb(147, 219, 217);
     font-size: 2.5em;
     animation: fadeIn 2s;
 }

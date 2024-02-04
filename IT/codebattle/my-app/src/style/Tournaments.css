@@ -65,7 +65,7 @@
 }
 
 .tournament-card h2 {
-    color: rgb(147, 219, 217);; /* Light blue color for the title */
+    color: rgb(147, 219, 217); /* Light blue color for the title */
 }
 
 
@@ -77,9 +77,7 @@ body {
     color: #CCC; /* Default text color for the whole page */
 }
 
-input, button, a {
-    /* Adjust your form elements and buttons to match the dark theme */
-}
+
 
 .tournament-deadline {
     color: #FFD700; /* Colore dorato per la deadline */

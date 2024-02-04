@@ -291,7 +291,7 @@ return codice;
             HttpHeaders headers = new HttpHeaders();
             headers.setContentType(MediaType.APPLICATION_OCTET_STREAM);
             
-            String filename = "codeKataTeam.text";
+            String filename = "codeKataTeam.txt";
             headers.setContentDispositionFormData("attachment", filename);
             return new ResponseEntity<>(codeKataTeam, headers, HttpStatus.OK);
         } catch (Exception e) {

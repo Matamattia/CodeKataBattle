@@ -96,7 +96,7 @@ public void testCreateTournamentRanking() {
     Tournament tournament = new Tournament();
     Student student = new Student();
     student.setEmail("student@example.com");
-    List<TournamentRankingDTO> rankingDTOs = Arrays.asList(new TournamentRankingDTO("student@example.com", 100f));
+    List<TournamentRankingDTO> rankingDTOs = Arrays.asList(new TournamentRankingDTO("student@example.com", 100.0));
     
     when(tournamentRepository.findById(tournamentId)).thenReturn(Optional.of(tournament));
     when(studentRepository.findById("student@example.com")).thenReturn(Optional.of(student));

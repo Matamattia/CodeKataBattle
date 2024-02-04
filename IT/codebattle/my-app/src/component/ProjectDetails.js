@@ -41,7 +41,7 @@ const ProjectDetails = () => {
         axios.get(`/battle/downloadCodeKata?projectId=${projectId}`, {
             responseType: 'blob',
         }).then((res) => {
-            FileDownload(res.data, "codeKataTeam.jpg"); // Adatta il nome del file se necessario
+            FileDownload(res.data, "codeKataTeam.txt"); // Adatta il nome del file se necessario
         }).catch((error) => {
             console.error('Errore nel download del file:', error);
         });

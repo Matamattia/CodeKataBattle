@@ -44,7 +44,7 @@
   .battle-form button.submit-button {
     width: 100%;
     padding: 10px;
-    background-color: #007bff;
+    background-color: rgb(147, 219, 217);
     color: white;
     border: none;
     border-radius: 4px;
@@ -53,7 +53,7 @@
   }
   
   .battle-form button.submit-button:hover {
-    background-color: #0056b3;
+    background-color: rgb(5, 61, 60);
   }
   
   .error-message {

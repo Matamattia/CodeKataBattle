@@ -120,12 +120,14 @@ const BattleForm = () => {
         />
         <input
           type="text"
-          placeholder="Type of file"
+          placeholder="Type of file, ex. java,py"
           name="fileType"
           value={formData.fileType}
           onChange={handleChange}
           required
         />
+        <label>
+          registrationDeadline
         <input
           type="datetime-local"
           name="registrationDeadline"
@@ -133,6 +135,9 @@ const BattleForm = () => {
           onChange={handleChange}
           required
         />
+        </label>
+        submissionDeadline
+        <label>
         <input
           type="datetime-local"
           name="submissionDeadline"
@@ -140,6 +145,7 @@ const BattleForm = () => {
           onChange={handleChange}
           required
         />
+        </label>
         <label>
           Manual Evaluation:
           <input

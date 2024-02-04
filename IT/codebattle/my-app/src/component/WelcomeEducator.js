@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import '../style/WelcomePageEducator.css'; 
+import '../style/WPE.css'; 
 import HeaderEducator from './HeaderEducator';
 
 function WelcomeEducator() {
