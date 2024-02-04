@@ -41,14 +41,14 @@ const ProjectDetails = () => {
         axios.get(`/battle/downloadCodeKata?projectId=${projectId}`, {
             responseType: 'blob',
         }).then((res) => {
-            FileDownload(res.data, "codeKataTeam.txt"); // Adatta il nome del file se necessario
+            FileDownload(res.data, "codeKataTeam.txt"); 
         }).catch((error) => {
             console.error('Errore nel download del file:', error);
         });
     };
 
     const sendEvaluation = () => {
-        // Placeholder per l'email dell'educator. Sostituire con il valore appropriato.
+        
         const educatorEmail = getEmailFromJwt();
         axios.post('/evaluation/evaluateProject', {
             projectId: project.projectId,
