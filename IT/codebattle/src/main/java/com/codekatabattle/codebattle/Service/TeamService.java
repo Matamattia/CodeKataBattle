@@ -25,10 +25,7 @@ public class TeamService {
     public Team createTeam(Team team) {
         return teamRepository.save(team);
     }
-    /* 
-    public TeamParticipant joinTeam(TeamParticipant teamParticipant){
-        return teamParticipantRepository.save(teamParticipant);
-    }*/
+
 
      public TeamParticipant joinTeam(String studentEmail,Integer teamId){
         TeamParticipant teamParticipant = new TeamParticipant();
@@ -46,8 +43,7 @@ public class TeamService {
     }
 
     public boolean isMemberOfTeam(String codiceInvito, String studentEmail) {
-        // Qui dovrai scrivere la logica per determinare se lo studente è membro del team.
-        // Questo esempio è semplificato e potrebbe richiedere modifiche in base alla struttura del tuo database.
+
 
         Team teamOpt = teamRepository.findByCodiceInvito(codiceInvito);
         

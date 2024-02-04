@@ -77,7 +77,7 @@ public class GitHubController {
         
         float score = (1 - ((float)pushDuration / totalDuration)) * 100;
         System.out.println("SCORE"+score);
-        return Math.max(score, 0); // Assicurati che il punteggio non sia negativo
+        return Math.max(score, 0); 
     }
     
     

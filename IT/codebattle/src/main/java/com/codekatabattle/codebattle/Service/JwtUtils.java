@@ -22,5 +22,5 @@ public class JwtUtils {
                 .compact();
     }
 
-    // Qui puoi aggiungere altri metodi, come per convalidare il token o estrarre informazioni da esso
+   
 }

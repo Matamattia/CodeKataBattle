@@ -65,10 +65,7 @@ public class TournamentService {
     
     //tournaments of the student
     public List<Tournament> myTournaments(String studentEmail){
-        /*
-        List <Integer> tournamentsId = teamParticipantRepository.findTournamentIdsByStudentEmail(studentEmail);
-        return tournamentRepository.findAllById(tournamentsId);
-        */
+
         List<Integer> tournamentIDs = studentTournamentRepository.findTournamentIdsByStudentEmail(studentEmail);
         return tournamentRepository.findAllById(tournamentIDs);
         

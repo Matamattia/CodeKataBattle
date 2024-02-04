@@ -4,9 +4,9 @@ import java.util.Date;
 
 
 public class BattleDTO {
-    // Include tutti gli altri campi di Battle
+ 
     private Integer battleId;
-    private Integer tournamentId; // Assumi che sia Integer, adattalo se necessario
+    private Integer tournamentId; 
     private String linkRepository;
     private Integer minStudent;
     private Integer maxStudent;
@@ -77,6 +77,6 @@ public class BattleDTO {
         this.isEvaluatedManual = isEvaluatedManual;
     }
 
-    // getter e setter per tutti i campi
+   
 }
 

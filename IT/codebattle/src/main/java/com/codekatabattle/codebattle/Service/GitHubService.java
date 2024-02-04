@@ -25,7 +25,7 @@ public class GitHubService {
                                   .autoInit(true)
                                   .create();
  
-        // Aggiungi il file YAML di GitHub Actions
+        
        
         addCodeKataBattleFile(repo,battle);
     }
@@ -36,7 +36,7 @@ public class GitHubService {
     String fileType = battle.getFileType();
     String filePath = "CodeKataBattle." + fileType;
  
-    // Aggiungi il file al repository
+    
     repo.createContent()
         .path(filePath)
         .content(battle.getCodeKataTests())
