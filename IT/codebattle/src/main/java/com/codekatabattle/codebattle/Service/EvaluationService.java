@@ -47,7 +47,7 @@ public class EvaluationService {
             manualEvaluation.setEducator(educator.get());
             manualEvaluation.setPersonalScore(personalScore);
         }
-
+        
         return manualEvaluationRepository.save(manualEvaluation);
     }
     
