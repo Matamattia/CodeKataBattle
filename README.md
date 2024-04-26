@@ -9,7 +9,7 @@ Academic Year 2023/2024
 - **RASD**: Stored in the `RASD` folder, this contains all elements pertaining to the Requirement Analysis and Specification Document.
 
 ### Installation (CKB)
-Check the ITD (Implementation Technical Document) document in the `IT` folder for more information about the installation process.
+Check the ITD (Implementation Technical Document) document in the `DeliveryFolder` folder for more information about the installation process.
 
 ### Project Results
 The project was highly successful, achieving a final grade of **30 cum laude**.
